@@ -364,153 +364,131 @@ Prints information for yourself or another user. It will give you the user's uni
 Example:
 
     [user@compute ~]$ id
+    uid=5555(user) gid=1000(professors)
+    [user@compute ~]$ id joe
+    uid=1234(joe) gid=1000(professors) groups=1000(professors),1056(igsp),1029(willardlab),1088(genomic-handbook)
 
-uid=5555(user) gid=1000(professors)
+**whoami**
 
-[user@compute ~]$ id joe
+A similar tool is whoami, which simply displays your own username. Example:
 
-uid=1234(joe) gid=1000(professors) groups=1000(professors),1056(igsp),1029(willardlab),1088(genomic-handbook)
+    [user@compute ~]$ whoami
+    user
 
-- 
-  - A similar tool is whoami, which simply displays your own username. Example:
+**getent**
 
-[user@compute ~]$ whoami
+*Get* *ent*ries from a system database, such as /etc/passwd (list of users), /etc/group (list of groups), and other system files. Most commonly, this is used to find group membership. If you want to see which users are members of a specific group, then you can use getent to get entries in the group database.
 
-user
+Example:
 
-- getent
+    [user@compute ~]$ getent group chilab
+    chilab:\*:1041:gml7,cs80,jwu7,jdoss,xt2,mmk24,les36,jb279,mjv10,mh180,
+    cl215,sl238,chi00002,ljo6,avc2,jel2,mh309,cl26,cl262
 
-- 
-  - Getentries from a system database, such as passwd (user list), group (group list), and other system files.
-  - Most commonly, this is used to find group membership. If you want to see which users are members of a specific group, then you can use getent to get entries in the group database.
-  - Example:
+**finger**
 
-[user@compute ~]$ getent group chilab
+Finger is used to point (get it?) at someone's username and find out a human readable response on who they are if you don't recognize their system id.
 
-chilab:\*:1041:gml7,cs80,jwu7,jdoss,xt2,mmk24,les36,jb279,mjv10,mh180,
+Example: 
 
-cl215,sl238,chi00002,ljo6,avc2,jel2,mh309,cl26,cl262
+I see on a server that user svu is running lots of jobs, but that username is quite cryptic. I try id first, to see which lab he is affiliated with but that doesn't help, and that is where finger comes in:
 
-- finger
+    [user@compute ~]$ id svu
+    uid=5555(svu) gid=400(visitors) groups=400(visitors)
+    [user@compute ~]$ finger svu
+    Login: svu              Name: Steve User
+    Directory: /home/svuShell: /bin/bash
+    Last login Wed Aug 1 23:34 2012 (EST) on pts/5 from localhost.
+    No mail.
+    No Plan.
 
-- 
-  - Finger is used to point at someone's username and find out a human readable response on who they are if you don't recognize their system id.
-  - Example: I see on a server that user svu is running lots of jobs, but that username is quite cryptic. I try id first, to see which lab he is affiliated with but that doesn't help, and that is where finger comes in:
+**chmod**
 
-[user@compute ~]$ id svu
+Change mode, is a command used to modify permissions on a file. If you would like to share your files with another user in your group, you can modify the permissions to grant read, write, or execute the file.
 
-uid=5555(svu) gid=400(visitors) groups=400(visitors)
-
-[user@compute ~]$ finger svu
-
-Login: svu              Name: Steve User
-
-Directory: /home/svuShell: /bin/bash
-
-Last login Wed Aug 1 23:34 2012 (EST) on pts/5 from localhost.
-
-eNo mail.
-
-No Plan.
-
-- chmod
-
-- 
-  - Change mode, is a command used to modify permissions on a file. If you would like to share your files with another user in your group, you can modify the permissions to grant read, write, or execute the file.
-  - Useful Switches:
+*Useful Switches:*
+    
     u (User)
     g (Group)
     o (Other)
     + (Add Permission)
-     (Remove Permission)
+    - (Remove Permission)
     r (read)
     w (write)
     x (execute)
 
-  - Example:
+Example:
 
-[user@compute ~]$ ls -l largefile.10g
-
--rwx------. 1 user research 10737418240 Jul 2 08:46 largefile.10g
+    [user@compute ~]$ ls -l largefile.10g
+    -rwx------. 1 user research 10737418240 Jul 2 08:46 largefile.10g
 
 The user above has the file largefile.10g that he would like to share with other people in the group "research" so that they can read and write to the file. This is where chmod comes in:
 
-[user@compute ~]$ chmod g+rw largefile.10g
+    [user@compute ~]$ chmod g+rw largefile.10g
+    [user@compute ~]$ ls -l largefile.10g
+    -rwxrw----. 1 user research 10737418240 Jul 2 08:46 largefile.10g
 
-[user@compute ~]$ ls -l largefile.10g
+The g+rw means that for the *g*roup, add ( + ) *r*ead and *w*rite permission. This results in the file having read, write, and execute permissions for the user, and read and write for the group.
 
--rwxrw----. 1 user research 10737418240 Jul 2 08:46 largefile.10g
+**chown**
 
-The g+rw means that for the g roup, add ( + ) r ead and w rite permission. This results in the file having read, write, and execute permissions for the user, and read and write for the group.
+Change Owner, is a command used to modify the owner of a file. This usually can only be performed on a system where you have administrative rights and can switch files from one user to another.
 
-- chown
+Example:
 
-- 
-  - Change Owner, is a command used to modify the owner of a file. This usually can only be performed on a system where you have administrative rights and can switch files from one user to another.
-  - Example:
+	[user@compute ~]$ chown user2 largefile.10g
+	[user@compute ~]$ ls -l largefile.10g
+	-rw-r--r-- 1 user2 staff 10737418240 Sep 6 11:38 largefile.10g
 
-[user@compute ~]$ chown user2 largefile.10g
+**chgrp**
 
-[user@compute ~]$ ls -l largefile.10g
+Change Group, is a command used to modify the group that can read a file. You can only switch group ownerships on a file that you are the owner of.
 
--rw-r--r-- 1 user2 staff 10737418240 Sep 6 11:38 largefile.10g
+Example:
 
-- chgrp
+    [user@compute ~]$ chgrp group2 largefile.10g
+    [user@compute ~]$ ls -l largefile.10g
+    -rw-r--r-- 1 user group2 10737418240 Sep 6 11:38 largefile.10g
 
-- 
-  - Change Group, is a command used to modify the group that can read a file. You can only switch group ownerships on a file that you are the owner of.
-  - Example:
+**Octal Permissions**
 
-[user@compute ~]$ chgrp group2 largefile.10g
+Another way to modify permissions that you will often see is to use octal numbers to do so. Each value r, w, x is equivalent to a number which, when all permissions are set, add up to 7 (full permission).
 
-[user@compute ~]$ ls -l largefile.10g
+    4 = read
+    2 = write
+    1 = execute
 
--rw-r--r-- 1 user group2 10737418240 Sep 6 11:38 largefile.10g
+Example:
 
-- Octal Permissions
+If we wanted to grant read and write permissions to the research group like we did with our example above, we could also do the following:
 
-- 
-  - Another way to modify permissions that you will often see is to use octal numbers to do so. Each value r, w, x is equivalent to a number which, when all permissions are set, add up to 7 (full permission).
-    - 
-      - 4 = read
-      - 2 = write
-      - 1 = execute
-
-  - Example: If we wanted to grant read and write permissions to the research group like we did with our example above, we could also do the following:
-
-[user@compute ~]$ chmod 760 largefile.10g
-
-[user@compute ~]$ ls -l largefile.10g
-
--rwxrw---- . 1 user research 10737418240 Jul 2 08:46 largefile.10g
-
-       
+    [user@compute ~]$ chmod 760 largefile.10g
+    [user@compute ~]$ ls -l largefile.10g
+    -rwxrw---- . 1 user research 10737418240 Jul 2 08:46 largefile.10g
 
 The 760 tells us that the user field should have an octal count of 7, (read+write+execute), the group field should have a count of 6, (read+write) and the other field should have a count of 0.
 
-Day 1 Lab 2: Working with Files in the Filesystem
+### Unit 2: Lab 2 - Working with Files in the Filesystem
 
-- Open the terminal application
-- Change your workstation to the /tmp directory.
-- Run id on your username, write down your primary group.
-- Make a directory named Lastname\_Firstname.
-- List the permissions on this directory.
-- Modify the permissions where others can enter the directory but not edit it's contents.
-- Change inside of the directory.
-- Create an empty file named foo.
-- Copy this file to a new file named bar.
-- Move this file to a new file named baz.
-- Modify the permissions so that only you can read foo.
-- Modify the permissions on baz to allow anyone to edit it. (not a good idea in the real world)
+1. Open the terminal application
+2. Change your workstation to the /tmp directory.
+3. Run id on your username, write down your primary group.
+4. Make a directory named Lastname_Firstname.
+5. List the permissions on this directory.
+6. Modify the permissions where others can enter the directory but not edit it's contents.
+7. Change inside of the directory.
+8. Create an empty file named foo.
+9. Copy this file to a new file named bar.
+10. Move this file to a new file named baz.
+11. Modify the permissions so that only you can read foo.
+12. Modify the permissions on baz to allow anyone to edit it. (not a good idea in the real world)
 
-- At the end you should have 3 deliverables:
-  - A folder with your name, with permissions set correctly.
-  - A primary empty file with that only you can read.
-  - A secondary empty file that anyone can edit.
+At the end you should have 3 deliverables:
+ - A folder with your name, with permissions set correctly.
+ - A primary empty file with that only you can read.
+ - A secondary empty file that anyone can edit.
 
-Day 2
-
-Unit 3: _Interactions With Data and Disk Storage_
+### Unit 3: Interactions With Data and Disk Storage
 
 - Mount Point
   - A mount point is a directory or location in the local filesystem that you can use to mount either a remote directory or local device to access the files available there.
@@ -672,7 +650,9 @@ san01a.igsp.duke.edu:/vol/central\_sata/data
 
 - 
   - 
-    Example: A user has a directory full of files which can be cumbersome to send over email as individual files. Using tar and bz2 compression, the directory can be compressed into a single file that can then be easily emailed:
+    Example:
+
+    A user has a directory full of files which can be cumbersome to send over email as individual files. Using tar and bz2 compression, the directory can be compressed into a single file that can then be easily emailed:
 
 [user@compute ~]$ du -hs unix101/
 
@@ -717,7 +697,9 @@ unix101/intro/parts.png
 
 - 
   - 
-    Example: Same as above but with zip. (Note, it shows you compression numbers per file. Neat.)
+    Example:
+    
+    Same as above but with zip. (Note, it shows you compression numbers per file. Neat.)
 
 [user@compute ~]$ du -hs unix101/
 
@@ -893,7 +875,9 @@ Unit 5_: Advanced File System Management_
 
 - grep
   - Utility for searching text for lines matching basic text or regular expressions.
-  - grep can be most useful in its simplest form when piping a command to grep and searching for a string of text. Example:
+  - grep can be most useful in its simplest form when piping a command to grep and searching for a string of text. 
+      
+      Example:
 
 [user@compute ~]$ df -h | grep scratch
 
@@ -933,7 +917,9 @@ newserver .igsp.duke.edu:/vol/central\_sata/data
 
 - awk
   - Awk is a tool used as a data extraction and and reporting tool, often taking in values from StdOut and separating lines into different fields via a specified separator and allowing you to report back a specific field.
-  - Example: I can list all group members with getent, but it gives me other info as well, if I just want the members, I can use awk to parse out that info, using the colon as the separator, and listing field 4.
+  - Example: 
+      
+      I can list all group members with getent, but it gives me other info as well, if I just want the members, I can use awk to parse out that info, using the colon as the separator, and listing field 4.
 
 [user@compute ~]$ getent group chilab
 
@@ -948,7 +934,9 @@ gml7,jwu7,jdoss,xt2,mmk24,cl215,chi00002,ljo6,jel2,mh309,cl26,cl262,avc2
 - Checksums
   - A checksum (or hash sum) is a small snippet of text computed from an arbitrary block of data for the purpose of detecting accidental errors that may have been introduced during its transmission or storage. The integrity of the data can be checked at any later time by recomputing the checksum and comparing it with the stored one. If the checksums match, the data was almost certainly not altered.
   - Some popular hash algorithms include: MD5, cksum, SHA-1, SHA-256
-  - MD5 is commonly used as it gives a good balance of performance (little time taken to generate a hash on large data) and collision resistance (likelihood that two different files will calculate to the same hash value). Example:
+  - MD5 is commonly used as it gives a good balance of performance (little time taken to generate a hash on large data) and collision resistance (likelihood that two different files will calculate to the same hash value). 
+      
+      Example:
 
 [user@localhost ~]$ md5sum foo.txt
 
@@ -1096,8 +1084,9 @@ Unit 7 : Simple system administration
 - Admin access    Making changes to the operating system components affects all users. As such, it requires administrator rights on the Linux system. On your class virtual machines you have admin access via the sudo command. On real production systems you will probably not have admin access and will need to request changes.
 - apt & yum - installing software
   - Linux software is mostly provided by a distribution. Software is arranged into packages and groups of packages. This is kind-a like an "app store", but everything is free and kept upto date by the distribution.
-  - Examples: On Red Hat Linux distributions, use yum:yum install scipy
-  - Examples: On Ubuntu / Debian distributions, use apt:apt-get install python-numpy
+  - Examples: 
+    * On Red Hat Linux distributions, use yum:yum install scipy
+    * On Ubuntu / Debian distributions, use apt:apt-get install python-numpy
 
 Day 2 Lab 3: Building a Program from Source
 
