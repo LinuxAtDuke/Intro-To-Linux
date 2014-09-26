@@ -7,7 +7,7 @@ Introduction to Linux
 
 Chris Collins, Jimmy Dorff, Drew Stinnett, et al
 
-** Table of Contents**
+**Table of Contents**
 
 1. [A Brief History of Unix](#unit0)
 2. [Lab 0: Creating a Personal Linux VM](#lab0)
@@ -102,8 +102,8 @@ Example:
     Enter new UNIX password:
     Retype new UNIX password:
 
-## Unit 1: Shell Navigation
 <a name='unit1'></a>
+## Unit 1: Shell Navigation
 
 **echo**
 
@@ -183,16 +183,16 @@ In this example, python 2.4.3 is installed in /usr/bin, and python 2.7.3 is inst
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
 
-## Lab 1 - Accessing a remote console, playing around
 <a name='lab1'></a>
+## Lab 1 - Accessing a remote console, playing around
 
 1. Open up a terminal window and ssh into the host provided.
 2. Once there echo your path.
 3. Open the manual for the echo command.
 4. Find out the option to make a new line above your echo statement.
  
-## Unit 2: Basic File System Functionality
 <a name='unit2'></a>
+## Unit 2: Basic File System Functionality
  
 **pwd**
 
@@ -489,8 +489,8 @@ If we wanted to grant read and write permissions to the research group like we d
 
 The 760 tells us that the user field should have an octal count of 7, (read+write+execute), the group field should have a count of 6, (read+write) and the other field should have a count of 0.
 
-## Lab 2 - Working with Files in the Filesystem
 <a name='lab2'></a>
+## Lab 2 - Working with Files in the Filesystem
 
 1. Open the terminal application
 2. Change your workstation to the /tmp directory.
@@ -510,8 +510,8 @@ At the end you should have 3 deliverables:
  - A primary empty file with that only you can read.
  - A secondary empty file that anyone can edit.
 
-## Unit 3: Interactions With Data and Disk Storage
 <a name='unit3'></a>
+## Unit 3: Interactions With Data and Disk Storage
 
 **Mount Point**
 
@@ -562,65 +562,36 @@ head & tail
     head and tail are quick file readers, displaying respectively the top (head) or bottom (tail) sections of a file. By default it shows 10 lines, but the -n switch can set the number of lines to be shown.
     Examples:
 
-[user@compute ~]$ tail /usr/share/dict/words
-
-Zythia
-
-zythum
-
-Zyzomys
-
-Zyzzogeton
-
-zyzzyva
-
-zyzzyvas
-
-ZZ
-
-Zz
-
-zZt
-
-ZZZ
-
-[user@compute ~]$ head -n15 /usr/share/dict/words
-
-1080
-
-10-point
-
-10th
-
-11-point
-
-12-point
-
-16-point
-
-18-point
-
-1st
-
-2
-
-20-point
-
-2,4,5-t
-
-2,4-d
-
-2D
-
-2nd
-
-30-30
-
-[user@compute ~]$ tail -n2 /usr/share/dict/words
-
-zZt
-
-ZZZ
+    [user@compute ~]$ tail /usr/share/dict/words
+    Zythia
+    zythum
+    Zyzomys
+    Zyzzogeton
+    zyzzyva
+    zyzzyvas
+    ZZ
+    Zz
+    zZt
+    ZZZ
+    [user@compute ~]$ head -n15 /usr/share/dict/words
+    1080
+    10-point
+    10th
+    11-point
+    12-point
+    16-point
+    18-point
+    1st
+    2
+    20-point
+    2,4,5-t
+    2,4-d
+    2D
+    2nd
+    30-30
+    [user@compute ~]$ tail -n2 /usr/share/dict/words
+    zZt
+    ZZZ
 
 - Command Output Redirection
 Redirection can be used to take the output of a command and write it into to a file instead of standard output (the terminal). There are two types of file redirection, one for overwrite and one for append.
@@ -629,15 +600,11 @@ Redirection can be used to take the output of a command and write it into to a f
 
 In this example, we use the df command to show the disk usage for the user's home directory and saves the output into a file called my\_quota.txt:
 
-[user@compute ~]$ df -h ~ > my\_quota.txt
-
-[user@compute ~]$ cat my\_quota.txt
-
-Filesystem      Size Used Avail Use% Mounted on
-
-san01a.igsp.duke.edu:/vol/central\_sata/data
-
-           4.7T 2.7T 2.0T 58% /nfs/central
+    [user@compute ~]$ df -h ~ > my\_quota.txt
+    [user@compute ~]$ cat my\_quota.txt
+    Filesystem      Size Used Avail Use% Mounted on
+    san01a.igsp.duke.edu:/vol/central\_sata/data
+    4.7T 2.7T 2.0T 58% /nfs/central
 
 - Text Editors
 Most configuration files, scripts, and system files are plain text and will need to be edited. There are a variety of text editors available on UNIX, which one you use is largely up to individual preference. To open a file, simply type run your editor of choice followed by the file (or files) you'd like to edit.
@@ -686,35 +653,21 @@ A user has a directory full of files which can be cumbersome to send over email 
 
     [user@compute ~]$ du -hs unix101/
     24M unix101/
-[user@compute ~]$ tar -cjvf unix101.tar.bz2 unix101/
-
-unix101/
-
-unix101/intro/
-
-unix101/intro/file\_layout.html
-
-unix101/intro/index.html
-
-unix101/intro/dilbert-unix.png
-
-unix101/intro/style.css
-
-unix101/intro/agenda.html
-
-unix101/intro/parts.html
-
-unix101/intro/parts.png
-
-...
-
-..
-
-.
-
-[user@compute ~]$ du -hs unix101.tar.bz2
-
-5M unix101.tar.bz2
+    [user@compute ~]$ tar -cjvf unix101.tar.bz2 unix101/
+    unix101/
+    unix101/intro/
+    unix101/intro/file\_layout.html
+    unix101/intro/index.html
+    unix101/intro/dilbert-unix.png
+    unix101/intro/style.css
+    unix101/intro/agenda.html
+    unix101/intro/parts.html
+    unix101/intro/parts.png
+    ...
+    ..
+    .
+    [user@compute ~]$ du -hs unix101.tar.bz2
+    5M unix101.tar.bz2
 
 - 
 Zip -- also available are the commands zip and unzip which are used for manipulating zip files, the common compression/archiving format on Windows and other platforms.
@@ -725,50 +678,32 @@ Zip -- also available are the commands zip and unzip which are used for manipula
 
 - 
 
-    Example:
-    
-    Same as above but with zip. (Note, it shows you compression numbers per file. Neat.)
+Example:
 
-[user@compute ~]$ du -hs unix101/
+Same as above but with zip. (Note, it shows you compression numbers per file. Neat.)
 
-24M unix101/
+    [user@compute ~]$ du -hs unix101/
+    24M unix101/
+    [user@compute ~]$ zip -r9 unix101.zip unix101
+    adding: unix101/ (stored 0%)
+    adding: unix101/intro/ (stored 0%)
+    adding: unix101/intro/file\_layout.html (deflated 36%)
+    adding: unix101/intro/index.html (deflated 48%)
+    adding: unix101/intro/dilbert-unix.png (stored 0%)
+    adding: unix101/intro/style.css (deflated 50%)
+    adding: unix101/intro/agenda.html (deflated 56%)
+    adding: unix101/intro/parts.html (deflated 36%)
+    adding: unix101/intro/parts.png (deflated 1%)
+    adding: unix101/intro/multitask2.html (deflated 40%)
+    adding: unix101/intro/file\_layout\_2.html (deflated 36%)
+    ...
+    ..
+    .
+    [user@compute ~]$ du -hs unix101.zip
+    5M unix101.zip
 
-[user@compute ~]$ zip -r9 unix101.zip unix101
-
-adding: unix101/ (stored 0%)
-
-adding: unix101/intro/ (stored 0%)
-
-adding: unix101/intro/file\_layout.html (deflated 36%)
-
-adding: unix101/intro/index.html (deflated 48%)
-
-adding: unix101/intro/dilbert-unix.png (stored 0%)
-
-adding: unix101/intro/style.css (deflated 50%)
-
-adding: unix101/intro/agenda.html (deflated 56%)
-
-adding: unix101/intro/parts.html (deflated 36%)
-
-adding: unix101/intro/parts.png (deflated 1%)
-
-adding: unix101/intro/multitask2.html (deflated 40%)
-
-adding: unix101/intro/file\_layout\_2.html (deflated 36%)
-
-…
-
-[user@compute ~]$ du -hs unix101.zip
-
-5M unix101.zip
-
-
-
-
-
-## Lab 3 -  Modifying Our Files
 <a name='lab3'></a>
+## Lab 3 -  Modifying Our Files
 
 1. Use head on the standard dictionary for 100 words and redirect them into your file foo.
 2. Use tail on the standard dictionary for 500 words and redirect them to your baz file.
@@ -784,12 +719,8 @@ adding: unix101/intro/file\_layout\_2.html (deflated 36%)
 12. Create a new folder called archive2 and extract your archive there.
 13. Use diff and display the differences of sizes file in your primary directory, and the one in the archive.
 
-
-
-
-
-## Unit 4: Exploring Methods of Data Transference
 <a name='unit4'></a>
+## Unit 4: Exploring Methods of Data Transference
 
 - Data Transfer
 
@@ -866,8 +797,8 @@ Resolving deltas: 100% (70684/70684), done.
 
 Checking connectivity... done.
 
-## Lab 4 - Transferring Data Amongst Remote Hosts
 <a name='lab4'></a>
+## Lab 4 - Transferring Data Amongst Remote Hosts
 
 - Open a shell on your local lab workstation.
 - Download a file from the following web link:
@@ -875,11 +806,8 @@ Checking connectivity... done.
 - Make note of the time it takes to complete the download.
 - We will use this file for a later lab.
 
-
-
-## Unit 5: Advanced File System Management
 <a name='unit5'></a>
-
+## Unit 5: Advanced File System Management
 
 - Hardlink
 A link (ln) or hard link is basically a reference to an inode address and a block of data on the disk. Most files will only ever have one, but there are instances when multiple can be useful.
@@ -1001,8 +929,8 @@ x The quick brown fox jumps over the lazy dog
 
 Just adding a single character to the beginning of the file causes the checksum to be drastically different, thus indicating a modification to the contents of file.
 
-## Unit 6: Advanced Process Management
 <a name='unit6'></a>
+## Unit 6: Advanced Process Management
 
 **Checking Machine Resources**
 
@@ -1107,8 +1035,8 @@ The best thing(s) since self-slicing bread!
 
 Screen and tmux are "terminal multiplexers".  This allows you to connect and disconnect from long running processes and monitor the output.  There are many good online "cheat sheets". 
 
-## Unit 7 : Simple system administration
 <a name='unit7'></a>
+## Unit 7 : Simple system administration
 
 **Admin access**
 
@@ -1160,8 +1088,8 @@ Make is the unix command to take the information from the make file and using th
     clean      clean up any leftovers from a prior failed build of the software
     install    install the binaries and libraries to the appropriate locations as defined by the configure --prefix option
 
-## Lab 5 - Building a Program from Source
 <a name='lab5'></a>
+## Lab 5 - Building a Program from Source
 
 In this lab, you will be building "ViennaRNA" from the source package you downloaded in Lab 4.
 
