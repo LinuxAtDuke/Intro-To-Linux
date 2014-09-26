@@ -39,7 +39,7 @@ Chris Collins, Jimmy Dorff, Drew Stinnett, et al
 - 1994: Single Unix specification announced, separates trademark from specific code instances.
 - 1994: First release of Red Hat Linux and Debian Linux, which become the dominant flavors of Linux. 
 - 1995: Toy Story, first feature-length computer-animated film, produced on Solaris workstations.
-- 1997: Titanic is the first major film to be majorly produced on Linux servers.
+- 1997: Titanic is the first major film to be largely produced on Linux servers.
 - 1999: Linux Kernel 2.2 released to celebrate Unix's 30th birthday.
 - 2001: Apple releases Mac OS X, based on BSD Unix.
 - 2003: Linux 2.6 kernel released. Red Hat creates RHEL and Fedora.
@@ -68,7 +68,7 @@ Example: `[user@hostname ~]$`
 
 **ssh - Secure Shell**
 
-Secure SHell is a protocol used to exchange data securely between systems, most commonly for interactive shell and file transfers.
+Ssh (Secure Shell) is a protocol used to exchange data securely between systems, most commonly for interactive shell and file transfers.
 
 On Mac OSX or other Linux or UNIX systems, simply use the ssh command to connect to remote hosts. On Windows, there are a variety of clients, one of the most popular and easy to use is Putty (freeware).
 
@@ -78,13 +78,13 @@ Example:
     netid@login.oit.duke.edu's password:
     [user@compute ~]$
 
-On the first connection to a host you will need to accept the host key.  For Mac and Linux systems, if your username is the same as your netid you can omit it.
+On the first connection to a host you will need to accept the host key.  For Mac and Linux systems, if your username is the same as your NetId you can omit it.
 
 <a name='lab0'></a>
 ## Lab 0 - Creating a personal Linux VM
 
 1. Using a web browser, go to *https://vm-manage.oit.duke.edu*
-2. Login using your Duke netid.
+2. Login using your Duke NetId.
 3. Create a new project for this class.
 4. Select *Ubuntu 14 Basic* for the Server.
 
@@ -134,7 +134,7 @@ This can be a security hazard though, as sometimes people accidentally type thei
 
 Shows the manuals for commands.
 
-Man can be your best friend when you are unfamiliar with commands in unix. You can run man followed by any command and see a comprehensive manual of the command and all options you can run it with.
+Man can be your best friend when you are unfamiliar with commands in UNIX. You can run man followed by any command and see a comprehensive manual of the command and all options you can run it with.
 
 Sometimes manuals can be lengthy and the amount of information you need is not easily discernible, as such, short form help can be found often by trailing a command with `-?` or `--help`.
 
@@ -169,7 +169,7 @@ In this example, python 2.4.3 is installed in /usr/bin, and python 2.7.3 is inst
     /usr/bin/python
     [user@compute01 ~]$ python
     Python \*\*2.4.3 (#1, Jun 18 2012, 08:55:23)\*\*
-    [GCC 4.1.2 20080704 (Red Hat 4.1.2-52)] on linux2
+    [GCC 4.1.2 20080704 (Red Hat 4.1.2-52)] on Linux2
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
 
@@ -179,7 +179,7 @@ In this example, python 2.4.3 is installed in /usr/bin, and python 2.7.3 is inst
     /usr/local/bin/python
     [user@compute01 ~]$ python
     Python \*\*2.7.3 (default, Aug 17 2012, 17:43:15)\*\*
-    [GCC 4.1.2 20080704 (Red Hat 4.1.2-52)] on linux2
+    [GCC 4.1.2 20080704 (Red Hat 4.1.2-52)] on Linux2
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
 
@@ -240,7 +240,7 @@ Example:
 
 **which**
 
-which is a command used to locate executables.
+Which is a command used to locate executables.
 
 If there are multiple executables with the same name in different directories in your path, which can be used to identify which one will be executed when you type the command.
 
@@ -251,7 +251,7 @@ Example:
 
 **Executing**
 
-In a unix environment, you execute a program by typing out the full path to it. In order to run matlab, you can type `/usr/local/bin/matlab`, or if your current working directory is the directory `/usr/local/bin`, you can use a relative path and type `./matlab`, or if it is in one of your application paths ($PATH) above, you simple have to type `matlab`.
+In a UNIX environment, you execute a program by typing out the full path to it. In order to run matlab, you can type `/usr/local/bin/matlab`, or if your current working directory is the directory `/usr/local/bin`, you can use a relative path and type `./matlab`, or if it is in one of your application paths ($PATH) above, you simple have to type `matlab`.
 
 **ls**
 
@@ -527,7 +527,7 @@ Knowing how much total space is available, how much is used, and how much is fre
 
 **df**
 
-Df (Disk File System Info) is used to see the entire size of a local volume or disk, and what is available, like I said above this may not be helpful to individual users, as a DF can report many terabytes available in a volume when in fact the user quota is much lower.
+DF (Disk File System Info) is used to see the entire size of a local volume or disk, and what is available, like I said above this may not be helpful to individual users, as a DF can report many terabytes available in a volume when in fact the user quota is much lower.
 
 *Useful Flags:*
 
@@ -536,7 +536,7 @@ Df (Disk File System Info) is used to see the entire size of a local volume or d
 
 **du**
 
-Du (Disk Usage) is used to count out the size of a particular directory, if you know the quota or volume size this will tell you what particular files or folders are using up specifically.
+DU (Disk Usage) is used to count out the size of a particular directory, if you know the quota or volume size this will tell you what particular files or folders are using up specifically.
 
 *Useful Flags:*
 
@@ -553,7 +553,7 @@ Short for "concatenate", cat was originally intended to combine two files into o
 
 **less & more**
 
-These programs are intended for the reading of longer files. More will display the contents of a file, and at what place you are in the file via percentage, near the bottom, and allow you to move only downward through the file one page at a time with the space bar. Less on the other hand is actually more... it allows for advanced functionality, using the arrow keys to traverse up and down a file.
+These programs are intended for the reading of longer files. More will display the contents of a file, and at what place you are in the file via percentage, near the bottom, and allow you to move only downward through the file one page at a time with the space bar. Less on the other hand is actually more: it allows for advanced functionality, using the arrow keys to traverse up and down a file.
 
 **diff**
 
@@ -567,7 +567,7 @@ This is a program that will point out lines that are different if you have two f
 
 **head & tail**
 
-Head and tail are quick file readers, displaying respectively the top (head) or bottom (tail) sections of a file. By default it shows 10 lines, but the -n switch can set the number of lines to be shown.
+Head and tail are quick file readers, displaying respectively the top (head) or bottom (tail) sections of a file. By default it shows 10 lines, but the `-n` switch can set the number of lines to be shown.
 
 Examples:
 
@@ -611,12 +611,12 @@ Redirection can be used to take the output of a command and write it into to a f
 
     >>   a double arrow is used to append to an existing file, very useful for logs, or continuing records so you can just add lines to the end
 
-In this example, we use the df command to show the disk usage for the user's home directory and saves the output into a file called my\_quota.txt:
+In this example, we use the `df` command to show the disk usage for the user's home directory and saves the output into a file called my_quota.txt:
 
-    [user@compute ~]$ df -h ~ > my\_quota.txt
-    [user@compute ~]$ cat my\_quota.txt
+    [user@compute ~]$ df -h ~ > my_quota.txt
+    [user@compute ~]$ cat my_quota.txt
     Filesystem      Size Used Avail Use% Mounted on
-    san01a.igsp.duke.edu:/vol/central\_sata/data
+    san01a.igsp.duke.edu:/vol/central_sata/data
     4.7T 2.7T 2.0T 58% /nfs/central
 
 **Text Editors**
@@ -625,7 +625,7 @@ Most configuration files, scripts, and system files are plain text and will need
 
 **nano / pico**
 
-Nano, as found on linux, or Pico as found on Mac OS and other proprietary systems, are nearly identical text editors and are a great editing tool for those new to UNIX. It has a handy command reference displayed which shows common commands, making it more intuitive than vi/vim.
+Nano, as found on Linux, or Pico as found on Mac OS and other proprietary systems, are nearly identical text editors and are a great editing tool for those new to UNIX. It has a handy command reference displayed which shows common commands, making it more intuitive than vi/vim.
 
 *Useful Keys:*
 
@@ -637,7 +637,7 @@ Nano, as found on linux, or Pico as found on Mac OS and other proprietary system
 
 **vi / vim**
 
-The default editor on most unix/linux systems, and the editor of choice of many system administrators and programmers, including the instructors of this course. It is very powerful and has many shortcuts and built in functions that can make file editing efficient.  This program is so complex that many classes and books have been designed for the sole purpose of teaching its advanced functions. While it does have a high initial learning curve, a little time spent up front to get past the initial learning curve can be worthwhile, as its basic functions can be useful even to the more casual user.
+The default editor on most UNIX/Linux systems, and the editor of choice of many system administrators and programmers, including the instructors of this course. It is very powerful and has many shortcuts and built in functions that can make file editing efficient.  This program is so complex that many classes and books have been designed for the sole purpose of teaching its advanced functions. While it does have a high initial learning curve, a little time spent up front to get past the initial learning curve can be worthwhile, as its basic functions can be useful even to the more casual user.
 
 **emacs**
 
@@ -645,17 +645,17 @@ Emacs is also an advanced editor, and one preferred by many programmers and syst
 
 **Opening and Saving**
 
-In order to open most files in a unix system, you just type the name of the editor you wish to use, and then follow with the filename.  To save, most of the editors have a write out function as defined in the Useful Keys section above.
+In order to open most files in a UNIX system, you just type the name of the editor you wish to use, and then follow with the filename.  To save, most of the editors have a write out function as defined in the Useful Keys section above.
 
 **File Extensions**
 
-Unlike Windows, where every file has an extension identifying its type, most files in a unix filesystem do not, and are just defined by their permissions, all files can be opened with one of the text editors above, but many cannot be read or edited this way, a compiled binary file will appear as gibberish to most people.
+Unlike Windows, where every file has an extension identifying its type, most files in a UNIX filesystem do not, and are just defined by their permissions, all files can be opened with one of the text editors above, but many cannot be read or edited this way, a compiled binary file will appear as gibberish to most people.
 
 **File Compression**
 
 **Tar**
 
-Tar is main UNIX archive utility that will allow you to store many files and directories into a single file, while optionally compressing them in the process. Compression methods include GZ (GZip) or BZ2 (BZip2). Using compression can drastically shrink the file size, which is useful when archiving or transferring data across the internet. Many applications (and source code) are distributed inside these archives.
+Tar is main UNIX archive utility that will allow you to store many files and directories into a single file, while optionally compressing them in the process. Compression methods include GZ (GZip) or BZ2 (BZip2). Using compression can drastically shrink the file size, which is useful when archiving or transferring data across the Internet. Many applications (and source code) are distributed inside these archives.
 
 *Useful Flags:* 
 
@@ -670,23 +670,23 @@ Example:
 
 A user has a directory full of files which can be cumbersome to send over email as individual files. Using tar and bz2 compression, the directory can be compressed into a single file that can then be easily emailed:
 
-    [user@compute ~]$ du -hs unix101/
-    24M unix101/
-    [user@compute ~]$ tar -cjvf unix101.tar.bz2 unix101/
-    unix101/
-    unix101/intro/
-    unix101/intro/file\_layout.html
-    unix101/intro/index.html
-    unix101/intro/dilbert-unix.png
-    unix101/intro/style.css
-    unix101/intro/agenda.html
-    unix101/intro/parts.html
-    unix101/intro/parts.png
+    [user@compute ~]$ du -hs UNIX101/
+    24M UNIX101/
+    [user@compute ~]$ tar -cjvf UNIX101.tar.bz2 UNIX101/
+    UNIX101/
+    UNIX101/intro/
+    UNIX101/intro/file\_layout.html
+    UNIX101/intro/index.html
+    UNIX101/intro/dilbert-UNIX.png
+    UNIX101/intro/style.css
+    UNIX101/intro/agenda.html
+    UNIX101/intro/parts.html
+    UNIX101/intro/parts.png
     ...
     ..
     .
-    [user@compute ~]$ du -hs unix101.tar.bz2
-    5M unix101.tar.bz2
+    [user@compute ~]$ du -hs UNIX101.tar.bz2
+    5M UNIX101.tar.bz2
 
 **Zip** 
 
@@ -701,25 +701,25 @@ Example:
 
 Same as above but with zip. (Note, it shows you compression numbers per file. Neat.)
 
-    [user@compute ~]$ du -hs unix101/
-    24M unix101/
-    [user@compute ~]$ zip -r9 unix101.zip unix101
-    adding: unix101/ (stored 0%)
-    adding: unix101/intro/ (stored 0%)
-    adding: unix101/intro/file\_layout.html (deflated 36%)
-    adding: unix101/intro/index.html (deflated 48%)
-    adding: unix101/intro/dilbert-unix.png (stored 0%)
-    adding: unix101/intro/style.css (deflated 50%)
-    adding: unix101/intro/agenda.html (deflated 56%)
-    adding: unix101/intro/parts.html (deflated 36%)
-    adding: unix101/intro/parts.png (deflated 1%)
-    adding: unix101/intro/multitask2.html (deflated 40%)
-    adding: unix101/intro/file\_layout\_2.html (deflated 36%)
+    [user@compute ~]$ du -hs UNIX101/
+    24M UNIX101/
+    [user@compute ~]$ zip -r9 UNIX101.zip UNIX101
+    adding: UNIX101/ (stored 0%)
+    adding: UNIX101/intro/ (stored 0%)
+    adding: UNIX101/intro/file\_layout.html (deflated 36%)
+    adding: UNIX101/intro/index.html (deflated 48%)
+    adding: UNIX101/intro/dilbert-UNIX.png (stored 0%)
+    adding: UNIX101/intro/style.css (deflated 50%)
+    adding: UNIX101/intro/agenda.html (deflated 56%)
+    adding: UNIX101/intro/parts.html (deflated 36%)
+    adding: UNIX101/intro/parts.png (deflated 1%)
+    adding: UNIX101/intro/multitask2.html (deflated 40%)
+    adding: UNIX101/intro/file\_layout\_2.html (deflated 36%)
     ...
     ..
     .
-    [user@compute ~]$ du -hs unix101.zip
-    5M unix101.zip
+    [user@compute ~]$ du -hs UNIX101.zip
+    5M UNIX101.zip
 
 <a name='lab3'></a>
 ## Lab 3 -  Modifying Our Files
@@ -886,7 +886,7 @@ Example:
 
 **awk**
 
-Awk is a tool used as a data extraction and and reporting tool, often taking in values from stdout and separating lines into different fields via a specified separator and allowing you to report back a specific field.
+Awk is a tool used as a data extraction and reporting tool, often taking in values from stdout and separating lines into different fields via a specified separator and allowing you to report back a specific field.
 
 Example: 
 
@@ -954,7 +954,7 @@ Free is a tool to see the amount of memory (RAM) and swap space available and in
     -g    display numbers in gigabytes (most useful in today's machines)
     -m    display numbers in megabytes
 
-Note that the way the Linux kernel allocates memory, free (and other utilities) may report that nearly all of your RAM is being used. This is not entirely true; Linux uses inactive memory to cache files very intelligently. However, if an application needs that memory, it will quickly release it from filesystem cache. For a more usable number, refer to the "-/+ buffers/cache" line to see how much RAM is available for applications, excluding the filesystem buffers.  (See [http://www.linuxatemyram.com/](http://www.linuxatemyram.com/) for a more detailed explanation.
+Note that the way the Linux kernel allocates memory, free (and other utilities) may report that nearly all of your RAM is being used. This is not entirely true; Linux uses inactive memory to cache files very intelligently. However, if an application needs that memory, it will quickly release it from filesystem cache. For a more usable number, refer to the "-/+ buffers/cache" line to see how much RAM is available for applications, excluding the filesystem buffers.  (See [http://www.Linuxatemyram.com/](http://www.Linuxatemyram.com/) for a more detailed explanation.
 
 **top**
 
@@ -1041,7 +1041,7 @@ Making changes to the operating system components affects all users. As such, it
 
 **apt & yum - installing software**
 
-Linux software is mostly provided by a distribution. Software is arranged into packages and groups of packages. This is kind-a like an "app store", but everything is free and kept upto date by the distribution.
+Linux software is mostly provided by a distribution. Software is arranged into packages and groups of packages. This is kind-a like an "app store", but everything is free and kept up to date by the distribution.
 
 Examples: 
 
@@ -1055,7 +1055,7 @@ On Ubuntu / Debian distributions, use apt:
 
 **Building an application from source.**
 
-The best practice is to use software provided by the Linux distribution. However, sometimes specialized research software isn't packaged in a common distribution like Ubuntu. Also, you may need a new or experimental version of an application or you may need to modify the source code. In such cases, users may need to compile these programs from their source code and install the binary application in their home directory to be used.  Your linux system must have a C compiler and basic software build tools. 
+The best practice is to use software provided by the Linux distribution. However, sometimes specialized research software isn't packaged in a common distribution like Ubuntu. Also, you may need a new or experimental version of an application or you may need to modify the source code. In such cases, users may need to compile these programs from their source code and install the binary application in their home directory to be used.  Your Linux system must have a C compiler and basic software build tools. 
 
 To install these execute:
 
@@ -1078,7 +1078,7 @@ The configure script will typically define variables such as where to find depen
     --prefix    allows a user to specify the directory to place outputs in once built
 
 **Make**
-Make is the unix command to take the information from the make file and using the resident compiler (usually gcc) build the application from the source libraries provided in the package. 
+Make is the UNIX command to take the information from the make file and using the resident compiler (usually gcc) build the application from the source libraries provided in the package. 
 *Useful Arguments:*
 
     test       check that the program compile correctly
@@ -1103,3 +1103,10 @@ In this lab, you will be building "ViennaRNA" from the source package you downlo
 8. Logout and back in to refresh ~/.bashrc
 9. Run `which RNAfold` to check that the program is now in your $PATH
 10. Execute `RNAfold` and see if it works
+
+---
+
+![Creative Commons CC0 1.0 License](http://i.creativecommons.org/p/zero/1.0/88x31.png)
+
+To the extent possible under law, [Linux@Duke](https://github.com/LinuxAtDuke) has waived all copyright and related or neighboring rights to *Introduction To Linux*.  This work published from: United States.
+
