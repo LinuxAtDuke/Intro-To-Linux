@@ -1,13 +1,13 @@
 Introduction to Linux
 =====================
 
-Fall 2014
+*Version 2.0, 20140926*
 
 **Instructors**
 
 Chris Collins, Jimmy Dorff, Drew Stinnett, et al
 
-**Unit 1: Shell Navigation, and A Brief History of Unix**
+## Unit 1: Shell Navigation, and A Brief History of Unix
 
 - 1969: Unix invented at Bell Labs by Ken Thompson, Dennis Ritchie & others.
 - 1971: First Edition used for text processing of patent documents.
@@ -60,10 +60,9 @@ Example:
     netid@login.oit.duke.edu's password:
     [user@compute ~]$
 
-On the first connection to a host you will need to accept the host key  
-For Mac and Linux systems, if your username is the same as your netid you can omit it
+On the first connection to a host you will need to accept the host key.  For Mac and Linux systems, if your username is the same as your netid you can omit it.
 
-## Unit 1: Lab 0 - Creating a personal Linux VM
+## Lab 0 - Creating a personal Linux VM
 
 1. Using a web browser, go to *https://vm-manage.oit.duke.edu*
 2. Login using your Duke netid.
@@ -106,7 +105,7 @@ The history command is very useful to see what commands you have run in the past
 
 This can be a security hazard though, as sometimes people accidentally type their passwords on the command line, and if someone happens to shoulder-peek whilst you are browsing your history it could be compromised.
 
-*Useful switches:*
+*Useful Flags:*
 
     -c    clears history
     -d    followed by a line number, clears the history from that line up only
@@ -164,7 +163,7 @@ In this example, python 2.4.3 is installed in /usr/bin, and python 2.7.3 is inst
     Type "help", "copyright", "credits" or "license" for more information.
     >>>
 
-## Unit 1: Lab 1 - Accessing a remote console, playing around
+## Lab 1 - Accessing a remote console, playing around
 
 1. Open up a terminal window and ssh into the host provided.
 2. Once there echo your path.
@@ -236,7 +235,7 @@ In a unix environment, you execute a program by typing out the full path to it. 
 
 Displays a listing of files and directories.
 
-*Useful switches:*
+*Useful Flags:*
 
     -l    Long directory listing. Prints more detail such as file size, ownership, permissions
     -h    Print human-readable sizes on a long listing
@@ -298,7 +297,7 @@ Example:
 
 Copy a file or directory.
 
-*Useful switches:*
+*Useful Flags:*
 
     -v                     Prints a line for every file copied
     -R, -r, --recursive    Recursively copy directories and all of their content - Use care with this one
@@ -316,7 +315,7 @@ Example:
 
 Moves or renames a file (which is actually the same operation in UNIX).
 
-*Useful switches:*
+*Useful Flags:*
 
     -v                   Verbose. Prints a line for every file moved
     -i, --interactive    Prompt before overwriting
@@ -333,7 +332,7 @@ Example:
 
 Removes (deletes) a file
 
-*Useful switches:*
+*Useful Flags:*
 
     -r, -R, --recursive    Recursively remove directories and their contents - USE EXTREME CARE
     -i, --interactive      Prompt before overwriting
@@ -406,7 +405,7 @@ I see on a server that user svu is running lots of jobs, but that username is qu
 
 Change mode, is a command used to modify permissions on a file. If you would like to share your files with another user in your group, you can modify the permissions to grant read, write, or execute the file.
 
-*Useful Switches:*
+*Useful Flags:*
     
     u (User)
     g (Group)
@@ -468,7 +467,7 @@ If we wanted to grant read and write permissions to the research group like we d
 
 The 760 tells us that the user field should have an octal count of 7, (read+write+execute), the group field should have a count of 6, (read+write) and the other field should have a count of 0.
 
-### Unit 2: Lab 2 - Working with Files in the Filesystem
+## Lab 2 - Working with Files in the Filesystem
 
 1. Open the terminal application
 2. Change your workstation to the /tmp directory.
@@ -488,27 +487,35 @@ At the end you should have 3 deliverables:
  - A primary empty file with that only you can read.
  - A secondary empty file that anyone can edit.
 
-### Unit 3: Interactions With Data and Disk Storage
+## Unit 3: Interactions With Data and Disk Storage
 
-- Mount Point
-  - A mount point is a directory or location in the local filesystem that you can use to mount either a remote directory or local device to access the files available there.
+**Mount Point**
 
-- NFS -- Network File System
+A mount point is a directory or location in the local filesystem that you can use to mount either a remote directory or local device to access the files available there.
 
-- 
-  - NFS is a protocol which allows remote file storage to be available (mounted) on another machine. Most Linux servers use NFS for home directories and many of their storage options.
+**NFS** 
 
-- Disk Usage & Quotas
-  - Knowing how much total space is available, how much is used, and how much is free is critical to working with data. For network storage, you probably have a quota assigned as well, which limits the amount of space an individual user can use on the storage volume. A few tools you can use to see the space available to you on a system are as follows:
-  - df     Disk File System Info
-    This is used to see the entire size of a local volume or disk, and what is available, like I said above this may not be helpful to individual users, as a DF can report many terabytes available in a volume when in fact the user quota is much lower.
-      - Useful flags
+*N*etwork *F*ile *S*ystem - NFS is a protocol which allows remote file storage to be available (mounted) on another machine. Most Linux servers use NFS for home directories and many of their storage options.
+
+**Disk Usage & Quotas**
+
+Knowing how much total space is available, how much is used, and how much is free is critical to working with data. For network storage, you probably have a quota assigned as well, which limits the amount of space an individual user can use on the storage volume. 
+
+**df**
+
+*D*isk *F*ile System Info 
+
+This is used to see the entire size of a local volume or disk, and what is available, like I said above this may not be helpful to individual users, as a DF can report many terabytes available in a volume when in fact the user quota is much lower.
+
+*Useful Flags:*
+
         - -h -- human-readable (converts byte values to MB, GB, etc.)
         - -T "Type" -- lists the type of filesystem
 
   - du    Disk Usage
     This is used to count out the size of a particular directory, if you know the quota or volume size this will tell you what particular files or folders are using up specifically.
       - Useful flags
+*Useful Flags:*
         - -h "human readable" -- converts sizes to GB
         - -s "summary" -- only shows top folder size.
 
@@ -523,7 +530,6 @@ At the end you should have 3 deliverables:
 
   - diff
     This is a program that will point out lines that are different if you have two files, or copies of the same file and want to see what the differences are.
-    Useful Switches
       - -y -- Displays contents side by size and points out differences.
       - -q -- Only displays that they are differently quickly.
       - -b -- Ignore extra lines or whitespace.
@@ -613,7 +619,8 @@ san01a.igsp.duke.edu:/vol/central\_sata/data
   - Most configuration files, scripts, and system files are plain text and will need to be edited. There are a variety of text editors available on UNIX, which one you use is largely up to individual preference. To open a file, simply type run your editor of choice followed by the file (or files) you'd like to edit.
   - nano / pico
     Nano, as found on linux, or Pico as found on Mac OS and other proprietary systems, are nearly identical text editors and are a great editing tool for those new to UNIX. It has a handy command reference displayed which shows common commands, making it more intuitive than vi/vim.
-    Useful keys:
+
+*Useful Keys:*
       - CTRL+O -- save
       - CTRL+W -- search
       - CTRL+V -- page down
@@ -639,25 +646,22 @@ san01a.igsp.duke.edu:/vol/central\_sata/data
 - File Compression
   - Tar
     The main UNIX archive utility that will allow you to store many files and directories into a single file, while optionally compressing them in the process. Compression methods include GZ (GZip) or BZ2 (BZip2). Using compression can drastically shrink the file size, which is useful when archiving or transferring data across the internet. Many applications (and source code) are distributed inside these archives.
-    Useful flags
-      - 
-        - c (create) create a new archive
-        - x (extract) extract or expand an archive file
-        - j (bz2 format) if compressed
-        - z (gzip format) if compressed
-        - v (verbose) will list files in and out of archive
-        - f (file name) the file you want to open, or save to
 
-- 
-  - 
-    Example:
+*Useful Flags:* 
 
-    A user has a directory full of files which can be cumbersome to send over email as individual files. Using tar and bz2 compression, the directory can be compressed into a single file that can then be easily emailed:
+    - c    (create) create a new archive
+    - x    (extract) extract or expand an archive file
+    - j    (bz2 format) if compressed
+    - z    (gzip format) if compressed
+    - v    (verbose) will list files in and out of archive
+    - f    (file name) the file you want to open, or save to
 
-[user@compute ~]$ du -hs unix101/
+Example:
 
-24M unix101/
+A user has a directory full of files which can be cumbersome to send over email as individual files. Using tar and bz2 compression, the directory can be compressed into a single file that can then be easily emailed:
 
+    [user@compute ~]$ du -hs unix101/
+    24M unix101/
 [user@compute ~]$ tar -cjvf unix101.tar.bz2 unix101/
 
 unix101/
@@ -739,27 +743,27 @@ adding: unix101/intro/file\_layout\_2.html (deflated 36%)
 
 
 
-Day 2 Lab 1: Modifying Our Files
+## Lab 3 -  Modifying Our Files
 
-- Use head on the standard dictionary for 100 words and redirect them into your file foo.
-- Use tail on the standard dictionary for 500 words and redirect them to your baz file.
-- Find out the size of each of these files and append that to a new file called sizes.
-- Now using echo, write the console output "My name is lastname\_firstname" over the contents of the baz file.
-- Using an editor modify the file to add a period at the end of the line.
-- Save the file.
-- Find out the size of the file and also redirect that to the file called sizes.
-- Make a new directory called archive, and copy each of the 3 files into the archive.
-- Create and bzip this archive file to a file called archive.tar.bz2.
-- Find out of the size of the archive file and append it to the sizes file.
-- Delete your archive folder.
-- Create a new folder called archive2 and extract your archive there.
-- Use diff and display the differences of sizes file in your primary directory, and the one in the archive.
-
-
+1. Use head on the standard dictionary for 100 words and redirect them into your file foo.
+2. Use tail on the standard dictionary for 500 words and redirect them to your baz file.
+3. Find out the size of each of these files and append that to a new file called sizes.
+4. Now using echo, write the console output "My name is lastname\_firstname" over the contents of the baz file.
+5. Using an editor modify the file to add a period at the end of the line.
+6. Save the file.
+7. Find out the size of the file and also redirect that to the file called sizes.
+8. Make a new directory called archive, and copy each of the 3 files into the archive.
+9. Create and bzip this archive file to a file called archive.tar.bz2.
+10. Find out of the size of the archive file and append it to the sizes file.
+11. Delete your archive folder.
+12. Create a new folder called archive2 and extract your archive there.
+13. Use diff and display the differences of sizes file in your primary directory, and the one in the archive.
 
 
 
-Unit 4: Exploring Methods of Data Transference
+
+
+## Unit 4: Exploring Methods of Data Transference
 
 - Data Transfer
 
@@ -836,7 +840,7 @@ Resolving deltas: 100% (70684/70684), done.
 
 Checking connectivity... done.
 
-Day 2 Lab 2: Transferring Data Amongst Remote Hosts
+## Lab 4 - Transferring Data Amongst Remote Hosts
 
 - Open a shell on your local lab workstation.
 - Download a file from the following web link:
@@ -846,7 +850,7 @@ Day 2 Lab 2: Transferring Data Amongst Remote Hosts
 
 
 
-Unit 5_: Advanced File System Management_
+## Unit 5: Advanced File System Management
 
 - Hardlink
   - A link (ln) or hard link is basically a reference to an inode address and a block of data on the disk. Most files will only ever have one, but there are instances when multiple can be useful.
@@ -968,7 +972,7 @@ x The quick brown fox jumps over the lazy dog
 
 Just adding a single character to the beginning of the file causes the checksum to be drastically different, thus indicating a modification to the contents of file.
 
-Unit 6_: Advanced Application Management_
+## Unit 6: Advanced Application Management
 
 - Checking Machine Resources
   - Besides disk space, there are other resources on a server which you should be aware of when running applications, especially computationally intensive ones. Resources to consider include CPU, RAM (memory), and network bandwidth.
@@ -1079,47 +1083,72 @@ In the above example, the program run.sh was executed normally, then stopped wit
   - screen / tmux - the best thing since self-slicing bread
     Allows you to connect and disconnect from long running processes and monitor the output. Good online "cheat sheets". 
 
-Unit 7 : Simple system administration
+## Unit 7 : Simple system administration
 
-- Admin access    Making changes to the operating system components affects all users. As such, it requires administrator rights on the Linux system. On your class virtual machines you have admin access via the sudo command. On real production systems you will probably not have admin access and will need to request changes.
-- apt & yum - installing software
-  - Linux software is mostly provided by a distribution. Software is arranged into packages and groups of packages. This is kind-a like an "app store", but everything is free and kept upto date by the distribution.
-  - Examples: 
-    * On Red Hat Linux distributions, use yum:yum install scipy
-    * On Ubuntu / Debian distributions, use apt:apt-get install python-numpy
+**Admin access**
 
-Day 2 Lab 3: Building a Program from Source
+Making changes to the operating system components affects all users. As such, it requires administrator rights on the Linux system. On your class virtual machines you have admin access via the sudo command. On real production systems you will probably not have admin access and will need to request changes.
 
-- Building an application from source.
-  - The best practice is to use software provided by the Linux distribution. However, sometimes specialized research software isn't packaged in a common distribution like Ubuntu. Also, you may need a new or experimental version of an application or you may need to modify the source code.
-  - In such cases, users may need to compile these programs from their source code and install the binary application in their home directory to be used.
-  - Your linux system must have a C compiler and basic software build tools. To install these execute:    sudo apt-get install build-essential
-  - Typically, compiling from source code involves the following basic steps:
-    Download and extract the source code
-    Run the configure script: ./configure
-    Compile the program: make
-    Install the program: make install
+**apt & yum - installing software**
 
-  - The configure script will typically define variables such as where to find dependencies and where to install the resulting executable and library files. It will usually produce a text file called a Makefile, that you can use to build the application.
-    Useful flags:
-      - --prefix -- allows a user to specify the directory to place outputs in once built.
+Linux software is mostly provided by a distribution. Software is arranged into packages and groups of packages. This is kind-a like an "app store", but everything is free and kept upto date by the distribution.
 
-  - make
-    Is the unix command to take the information from the make file and using the resident compiler (usually gcc) build the application from the source libraries provided in the package. 
-      - test -- a user can run make test to check that the program compile correctly.
-      - clean -- a user can run make clean to clean up any leftovers from a prior failed build of the software.
-      - install -- a user can have make install the binaries and libraries to the appropriate locations as defined by the configure -- prefix option.
+Examples: 
 
-- Building "ViennaRNA"
-  - using our source code we downloaded on day two, run a checksum that the archive is intact
-  - it should have the following checksum: 93297d5ee34567d5307bf537801fe381
-  - nce we know it's good, extract the tar.gz archive
-  - enter the extracted archive directory with cd
-  - execute the configure program, with a prefix of $HOME
-  - execute make on the newly generated makefile
-  - make install
-  - edit your path so that $HOME/bin is preferred
-  - logout and back in to refresh ~/.bashrc
-  - run which RNAfold to check
+On Red Hat Linux /CentOS distributions, use yum:
 
-execute programggGgg
+    yum install scipy
+
+On Ubuntu / Debian distributions, use apt:
+
+    apt-get install python-numpy
+
+**Building an application from source.** 
+
+The best practice is to use software provided by the Linux distribution. However, sometimes specialized research software isn't packaged in a common distribution like Ubuntu. Also, you may need a new or experimental version of an application or you may need to modify the source code. In such cases, users may need to compile these programs from their source code and install the binary application in their home directory to be used.  Your linux system must have a C compiler and basic software build tools. 
+
+To install these execute:
+
+    sudo apt-get install build-essential
+
+Typically, compiling from source code involves the following basic steps:
+
+1. Download and extract the source code
+2. Run the configure script: `./configure`
+3. Compile the program: `make`
+4. Install the program: `make install`
+
+
+** Configure **
+
+The configure script will typically define variables such as where to find dependencies and where to install the resulting executable and library files. It will usually produce a text file called a Makefile, that you can use to build the application.
+
+*Useful Flags:*
+
+    --prefix    allows a user to specify the directory to place outputs in once built
+
+** Make **
+Make is the unix command to take the information from the make file and using the resident compiler (usually gcc) build the application from the source libraries provided in the package. 
+*Useful Arguments:*
+
+    test       check that the program compile correctly
+    clean      clean up any leftovers from a prior failed build of the software
+    install    install the binaries and libraries to the appropriate locations as defined by the configure --prefix option
+
+## Lab 5 - Building a Program from Source
+
+In this lab, you will be building "ViennaRNA" from the source package you downloaded in Lab 4.
+
+1. Using the source code you downloaded in Lab 4, run a checksum to ensure that the archive is intact
+
+    It should have the following checksum: 93297d5ee34567d5307bf537801fe381
+
+2. Once we know it is good, extract the tar.gz archive
+3. Enter the extracted archive directory with `cd`
+4. Execute the `configure` program, with a prefix of `$HOME`
+5. Execute `make` on the newly generated makefile
+6. If make succeeds in compiling the program, run `make install` 
+7. Edit your path so that `$HOME/bin` is preferred
+8. Logout and back in to refresh ~/.bashrc
+9. Run `which RNAfold` to check that the program is now in your $PATH
+10. Execute `RNAfold` and see if it works
