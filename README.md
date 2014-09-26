@@ -517,7 +517,7 @@ At the end you should have 3 deliverables:
 
 A mount point is a directory or location in the local filesystem that you can use to mount either a remote directory or local device to access the files available there.
 
-**NFS** 
+**NFS**
 
 *N*etwork *F*ile *S*ystem - NFS is a protocol which allows remote file storage to be available (mounted) on another machine. Most Linux servers use NFS for home directories and many of their storage options.
 
@@ -809,123 +809,107 @@ Checking connectivity... done.
 <a name='unit5'></a>
 ## Unit 5: Advanced File System Management
 
-- Hardlink
-A link (ln) or hard link is basically a reference to an inode address and a block of data on the disk. Most files will only ever have one, but there are instances when multiple can be useful.
-Every hard link that points to the same file can be read and written to, and modifies the same underlying data inside the file. The exception to this are permissions; each hard link can have distinct, separate permissions.
-Hard links do not take up additional space in the filesystem, since they all point to the same data. This is contrary to making a copy of a file, whereas that will take up twice the amount of space on the filesystem.
-A file remains as long as there are at least one hard link pointing to it. Once the last hard link is deleted, the file is officially deleted and the space it previously consumed is freed.
+**Hardlink**
 
-- Symlink
-A symbolic link (ln -s) also referred to as a soft link, is similar to a shortcut in Windows. It points to the original location of a file, but if the destination file is moved or deleted, the link will be broken.
-A symlink can be deleted with no affect to the original file. Editing the data within the file from either the symlink or the file itself, will modify the original file.
+A link (ln) or hard link is basically a reference to an inode address and a block of data on the disk. Most files will only ever have one, but there are instances when multiple can be useful. Every hard link that points to the same file can be read and written to, and modifies the same underlying data inside the file. The exception to this are permissions; each hard link can have distinct, separate permissions.
 
-- find
+Hard links do not take up additional space in the filesystem, since they all point to the same data. This is contrary to making a copy of a file, which will take up twice the amount of space on the filesystem.  A file remains as long as there are at least one hard link pointing to it. Once the last hard link is deleted, the file is officially deleted and the space it previously consumed is freed.
+
+**Symlink**
+
+A symbolic link (ln -s) also referred to as a soft link, is similar to a shortcut in Windows. It points to the original location of a file, but if the destination file is moved or deleted, the link will be broken. A symlink can be deleted with no affect to the original file. Editing the data within the file from either the symlink or the file itself, will modify the original file.
+
+**find**
+
 find is a program that searches through one or more directories of a filesystem and reports files matching the specified criteria. Criteria could be file name, date, owner, permission, type, etc.
+
 Example:
 
-[user@compute ~]$ find ~ -name large\*
+    [user@compute ~]$ find ~ -name large\*
+    /home/user/largefile.10g
 
-/home/user/largefile.10g
+**locate**
 
-- locate
-Locate is similar to find, except it searches a precompiled database index of all files on the system instead of actually looking at the filesystem itself. This makes locate much faster than find; in most cases, it is instantaneous.
-Typically, the locate database is updated once per day by an automated task set by the system administrator. Because of this, the results from locate can be out of date if there have been changes made to the file(s) since the database was updated. Use find for the most up-to date information.
+Locate is similar to find, except it searches a precompiled database index of all files on the system instead of actually looking at the filesystem itself. This makes locate much faster than find; in most cases, it is instantaneous.  Typically, the locate database is updated once per day by an automated task set by the system administrator. Because of this, the results from locate can be out of date if there have been changes made to the file(s) since the database was updated. Use find for the most up-to date information.
 
-- Pipes 
+**Pipes**
+
 A pipe (|) is a method by which output from one command is used as the input for another command. This enables powerful processing of text, or streaming data from one program to another.
 
-- grep
+**grep**
+
 Utility for searching text for lines matching basic text or regular expressions.
 grep can be most useful in its simplest form when piping a command to grep and searching for a string of text. 
-      
-      Example:
 
-[user@compute ~]$ df -h | grep scratch
-
-/dev/sda7       44G  11G  32G 25% /scratch
-
-Piping the output of df to grep with the expression 'scratch' will show any lines containing that string, in this case the /scratch mountpoint. This simple use can be applicable in many cases. Try some on your own.
-
-- 
-Useful flags:
-    v -- invert match (show only lines which do not match the expression)
-    An, -Bn, -Cn -- show surrounding n line(s) around the matching text (Above, Below, or Context [above and below])
-    i -- ignore case (case insensitive search)
-
-- Regex
-Regular Expressions are a concise and flexible means to "match" for strings of text, such as particular characters, words, or patterns of characters. It can really help when searching logs and databases for entries or like entries.
-Because of their complexity, we will only touch on regular expressions by their use in other programs. See the links in External Resources section for more info.
-
-- sed
-Stream Editor - is a utility that parses text and can apply transformations to that text as defined by regular expressions. It reads input from a pipe or from a file and applies a regular expression to each line and outputs them to stdout.
 Example:
 
-[user@compute ~]$ cat my\_quota.txt
+    [user@compute ~]$ df -h | grep scratch
+    /dev/sda7       44G  11G  32G 25% /scratch
 
-Filesystem      Size Used Avail Use% Mounted on
+Piping the output of `df` to `grep` with the expression 'scratch' will show any lines containing that string, in this case the /scratch mountpoint. This simple use can be applicable in many cases. Try some on your own.
 
-san01a.igsp.duke.edu :/vol/central\_sata/data
+*Useful flags:*
 
-           4.7T 2.7T 2.0T 58% /nfs/central
+    -v               invert match (show only lines which do not match the expression)
+    -An, -Bn, -Cn    show surrounding n line(s) around the matching text Above, Below, or Context (above and below)
+    -i               ignore case (case insensitive search)
 
-[user@compute ~]$ sed 's/san01a/newserver/' my\_quota.txt
+**Regex**
 
-Filesystem      Size Used Avail Use% Mounted on
+Regular Expressions are a concise and flexible means to "match" for strings of text, such as particular characters, words, or patterns of characters. It can really help when searching logs and databases for entries or like entries.  Because of their complexity, we will only touch on regular expressions by their use in other programs. See the links in External Resources section for more info.
 
-newserver .igsp.duke.edu:/vol/central\_sata/data
+**sed**
 
-           4.7T 2.7T 2.0T 58% /nfs/central
+Stream Editor, a utility that parses text and can apply transformations to that text as defined by regular expressions. It reads input from a pipe or from a file and applies a regular expression to each line and outputs them to stdout.
 
-- awk
-Awk is a tool used as a data extraction and and reporting tool, often taking in values from StdOut and separating lines into different fields via a specified separator and allowing you to report back a specific field.
+Example:
+
+    [user@compute ~]$ cat my\_quota.txt
+    Filesystem      Size Used Avail Use% Mounted on
+    san01a.igsp.duke.edu :/vol/central\_sata/data
+    4.7T 2.7T 2.0T 58% /nfs/central
+    [user@compute ~]$ sed 's/san01a/newserver/' my\_quota.txt
+    Filesystem      Size Used Avail Use% Mounted on
+    newserver .igsp.duke.edu:/vol/central\_sata/data
+    4.7T 2.7T 2.0T 58% /nfs/central
+
+**awk**
+
+Awk is a tool used as a data extraction and and reporting tool, often taking in values from stdout and separating lines into different fields via a specified separator and allowing you to report back a specific field.
+
 Example: 
-      
-      I can list all group members with getent, but it gives me other info as well, if I just want the members, I can use awk to parse out that info, using the colon as the separator, and listing field 4.
 
-[user@compute ~]$ getent group chilab
+You can list all group members with getent, but it gives me other info as well, if you just want the members, you can use awk to parse out that info, using the colon as the separator, and listing field 4.
 
-chilab:\*:1041:gml7,jwu7,jdoss,xt2,mmk24,cl215,chi00002,ljo6,jel2,mh309,cl26,cl262,avc2
+    [user@compute ~]$ getent group chilab
+    chilab:\*:1041:gml7,jwu7,jdoss,xt2,mmk24,cl215,chi00002,ljo6,jel2,mh309,cl26,cl262,avc2
+    [user@compute ~]$ getent group chilab | awk -F: '{print $4}'
+    gml7,jwu7,jdoss,xt2,mmk24,cl215,chi00002,ljo6,jel2,mh309,cl26,cl262,avc2
 
-[user@compute ~]$ getent group chilab | awk -F: '{print $4}'
+**Checksums**
 
-gml7,jwu7,jdoss,xt2,mmk24,cl215,chi00002,ljo6,jel2,mh309,cl26,cl262,avc2
+A checksum (or hash sum) is a small snippet of text computed from an arbitrary block of data for the purpose of detecting accidental errors that may have been introduced during its transmission or storage. The integrity of the data can be checked at any later time by recomputing the checksum and comparing it with the stored one. If the checksums match, the data was almost certainly not altered.  Some popular hash algorithms include: MD5, cksum, SHA-1, SHA-256.
 
-
-
-- Checksums
-A checksum (or hash sum) is a small snippet of text computed from an arbitrary block of data for the purpose of detecting accidental errors that may have been introduced during its transmission or storage. The integrity of the data can be checked at any later time by recomputing the checksum and comparing it with the stored one. If the checksums match, the data was almost certainly not altered.
-Some popular hash algorithms include: MD5, cksum, SHA-1, SHA-256
 MD5 is commonly used as it gives a good balance of performance (little time taken to generate a hash on large data) and collision resistance (likelihood that two different files will calculate to the same hash value). 
-      
-      Example:
 
-[user@localhost ~]$ md5sum foo.txt
+Example:
 
-37c4b87edffc5d198ff5a185cee7ee09 foo.txt
-
-[user@localhost ~]$ mv -v foo.txt foo2.txt
-
-`foo.txt' -> `foo2.txt'
-
-[user@localhost ~]$ md5sum foo2.txt
-
-37c4b87edffc5d198ff5a185cee7ee09 foo2.txt
+    [user@localhost ~]$ md5sum foo.txt
+    37c4b87edffc5d198ff5a185cee7ee09 foo.txt
+    [user@localhost ~]$ mv -v foo.txt foo2.txt
+    `foo.txt' -> `foo2.txt'
+    [user@localhost ~]$ md5sum foo2.txt
+    37c4b87edffc5d198ff5a185cee7ee09 foo2.txt
 
 Notice, after moving the file, the hash sum is the same, because the contents are identical and the file integrity is intact. Now instead if we edit the contents just by adding one character, we get a drastically different checksum value:
 
-[user@localhost ~]$ md5sum foo.txt
-
-37c4b87edffc5d198ff5a185cee7ee09 foo.txt
-
-[user@localhost ~]$ vi foo.txt
-
-[user@localhost ~]$ cat foo.txt
-
-x The quick brown fox jumps over the lazy dog
-
-[user@localhost ~]$ md5sum foo.txt
-
-1dcf0a9446176bee28ee29464400da86 foo.txt
+    [user@localhost ~]$ md5sum foo.txt
+    37c4b87edffc5d198ff5a185cee7ee09 foo.txt
+    [user@localhost ~]$ vi foo.txt
+    [user@localhost ~]$ cat foo.txt
+    x The quick brown fox jumps over the lazy dog
+    [user@localhost ~]$ md5sum foo.txt
+    1dcf0a9446176bee28ee29464400da86 foo.txt
 
 Just adding a single character to the beginning of the file causes the checksum to be drastically different, thus indicating a modification to the contents of file.
 
@@ -936,7 +920,7 @@ Just adding a single character to the beginning of the file causes the checksum 
 
 Besides disk space, there are other resources on a server which you should be aware of when running applications, especially computationally intensive ones. Resources to consider include CPU, RAM (memory), and network bandwidth.
 
-**ps** 
+**ps**
 
 Processes - A program that lists running processes on the system.
 
@@ -968,12 +952,14 @@ An interactive program that provides a dynamic real-time view of a running syste
 **Managing Processes**
 
 **kill**
-    Just as it describes, a command used for killing an active process abruptly. Often used by administrators for cleaning up rogue jobs, but regular users can also control their own jobs with this command as well.
-    This command requires you to specify the PID of the process to be killed (this can be found with the ps command).
-    Useful flags:
-    -STOP -- suspends the process exactly as it is
-    -CONT -- resume a previously STOP'd process
-    -9 -- This is the most forceful method for killing a process
+
+Just as it describes, a command used for killing an active process abruptly. Often used by administrators for cleaning up rogue jobs, but regular users can also control their own jobs with this command as well. This command requires you to specify the PID of the process to be killed (this can be found with the ps command).
+
+*Useful Flags:*
+
+    -STOP    suspends the process exactly as it is
+    -CONT    resume a previously STOP'd process
+    -9       the most forceful method for killing a process
 
 **pkill**
     Similar to kill though it will allow you to search for processes based on specific terms such as user.
@@ -1056,7 +1042,7 @@ On Ubuntu / Debian distributions, use apt:
 
     apt-get install python-numpy
 
-**Building an application from source.** 
+**Building an application from source.**
 
 The best practice is to use software provided by the Linux distribution. However, sometimes specialized research software isn't packaged in a common distribution like Ubuntu. Also, you may need a new or experimental version of an application or you may need to modify the source code. In such cases, users may need to compile these programs from their source code and install the binary application in their home directory to be used.  Your linux system must have a C compiler and basic software build tools. 
 
@@ -1072,7 +1058,7 @@ Typically, compiling from source code involves the following basic steps:
 4. Install the program: `make install`
 
 
-** Configure **
+**Configure**
 
 The configure script will typically define variables such as where to find dependencies and where to install the resulting executable and library files. It will usually produce a text file called a Makefile, that you can use to build the application.
 
@@ -1080,7 +1066,7 @@ The configure script will typically define variables such as where to find depen
 
     --prefix    allows a user to specify the directory to place outputs in once built
 
-** Make **
+**Make**
 Make is the unix command to take the information from the make file and using the resident compiler (usually gcc) build the application from the source libraries provided in the package. 
 *Useful Arguments:*
 
