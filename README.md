@@ -512,29 +512,29 @@ This is used to see the entire size of a local volume or disk, and what is avail
         - -h -- human-readable (converts byte values to MB, GB, etc.)
         - -T "Type" -- lists the type of filesystem
 
-  - du    Disk Usage
+du    Disk Usage
     This is used to count out the size of a particular directory, if you know the quota or volume size this will tell you what particular files or folders are using up specifically.
-      - Useful flags
+    Useful flags
 *Useful Flags:*
-        - -h "human readable" -- converts sizes to GB
-        - -s "summary" -- only shows top folder size.
+      -h "human readable" -- converts sizes to GB
+      -s "summary" -- only shows top folder size.
 
-  - Reading files
+Reading files
 
 - 
-  - cat
+cat
     Short for Concatenate, originally intended to combine two files into one long file to browse, many people use it for a simple output of the entire contents of a file. It's useful in a graphical terminal because once a file or files are catted out, you can browse up and down them with your mouse.
 
-  - less & more
+less & more
     These programs are intended for the reading of longer files. More will display the contents of a file, and at what place you are in the file via percentage, near the bottom, and allow you to move only downward through the file one page at a time with the space bar. Less on the other hand is actually more... it allows for advanced functionality, using the arrow keys to traverse up and down a file.
 
-  - diff
+diff
     This is a program that will point out lines that are different if you have two files, or copies of the same file and want to see what the differences are.
-      - -y -- Displays contents side by size and points out differences.
-      - -q -- Only displays that they are differently quickly.
-      - -b -- Ignore extra lines or whitespace.
+    -y -- Displays contents side by size and points out differences.
+    -q -- Only displays that they are differently quickly.
+    -b -- Ignore extra lines or whitespace.
 
-  - head & tail
+head & tail
     head and tail are quick file readers, displaying respectively the top (head) or bottom (tail) sections of a file. By default it shows 10 lines, but the -n switch can set the number of lines to be shown.
     Examples:
 
@@ -599,11 +599,11 @@ zZt
 ZZZ
 
 - Command Output Redirection
-  - Redirection can be used to take the output of a command and write it into to a file instead of standard output (the terminal). There are two types of file redirection, one for overwrite and one for append.
+Redirection can be used to take the output of a command and write it into to a file instead of standard output (the terminal). There are two types of file redirection, one for overwrite and one for append.
     > -- a single arrow is used to create a file, or overwrite the contents of an existing file if necessary. This is good for sanity checks, many people will have a program that writes out a new file with a specific output and check back against it.
     >> -- a double arrow is used to append to an existing file, very useful for logs, or continuing records so you can just add lines to the end.
 
-  - In this example, we use the df command to show the disk usage for the user's home directory and saves the output into a file called my\_quota.txt:
+In this example, we use the df command to show the disk usage for the user's home directory and saves the output into a file called my\_quota.txt:
 
 [user@compute ~]$ df -h ~ > my\_quota.txt
 
@@ -616,35 +616,35 @@ san01a.igsp.duke.edu:/vol/central\_sata/data
            4.7T 2.7T 2.0T 58% /nfs/central
 
 - Text Editors
-  - Most configuration files, scripts, and system files are plain text and will need to be edited. There are a variety of text editors available on UNIX, which one you use is largely up to individual preference. To open a file, simply type run your editor of choice followed by the file (or files) you'd like to edit.
-  - nano / pico
+Most configuration files, scripts, and system files are plain text and will need to be edited. There are a variety of text editors available on UNIX, which one you use is largely up to individual preference. To open a file, simply type run your editor of choice followed by the file (or files) you'd like to edit.
+nano / pico
     Nano, as found on linux, or Pico as found on Mac OS and other proprietary systems, are nearly identical text editors and are a great editing tool for those new to UNIX. It has a handy command reference displayed which shows common commands, making it more intuitive than vi/vim.
 
 *Useful Keys:*
-      - CTRL+O -- save
-      - CTRL+W -- search
-      - CTRL+V -- page down
-      - CTRL+Y -- page up
-      - CTRL+X -- exit
+    CTRL+O -- save
+    CTRL+W -- search
+    CTRL+V -- page down
+    CTRL+Y -- page up
+    CTRL+X -- exit
 
-  - vi / vim
+vi / vim
     The default editor on most unix/linux systems, and the editor of choice of many system administrators and programmers, including the instructors of this course. It is very powerful and has many shortcuts and built in functions that can make file editing efficient.
     This program is so complex that many classes and books have been designed for the sole purpose of teaching its advanced functions. While it does have a high initial learning curve, a little time spent up front to get past the initial learning curve can be worthwhile, as its basic functions can be useful even to the more casual user.
 
-  - emacs
+emacs
     Emacs is also an advanced editor, and one preferred by many programmers and systems administrators as it contains an executable shell to work from while editing.
 
-  - Opening
+Opening
     In order to open most files in a unix system, you just type the name of the editor you wish to use, and then follow with the filename.
 
-  - Saving
+Saving
     In order to save, most of the editors have a write out function as defined in the Useful Keys section above.
 
 - File Extensions
-  - Unlike Windows, where every file has an extension identifying its type, most files in a unix filesystem do not, and are just defined by their permissions, all files can be opened with one of the text editors above, but many cannot be read or edited this way, a compiled binary file will appear as gibberish to most people.
+Unlike Windows, where every file has an extension identifying its type, most files in a unix filesystem do not, and are just defined by their permissions, all files can be opened with one of the text editors above, but many cannot be read or edited this way, a compiled binary file will appear as gibberish to most people.
 
 - File Compression
-  - Tar
+Tar
     The main UNIX archive utility that will allow you to store many files and directories into a single file, while optionally compressing them in the process. Compression methods include GZ (GZip) or BZ2 (BZip2). Using compression can drastically shrink the file size, which is useful when archiving or transferring data across the internet. Many applications (and source code) are distributed inside these archives.
 
 *Useful Flags:* 
@@ -693,14 +693,14 @@ unix101/intro/parts.png
 5M unix101.tar.bz2
 
 - 
-  - Zip -- also available are the commands zip and unzip which are used for manipulating zip files, the common compression/archiving format on Windows and other platforms.
+Zip -- also available are the commands zip and unzip which are used for manipulating zip files, the common compression/archiving format on Windows and other platforms.
     Useful flags
-      - 
-        - r (recursive) must be used to grab all sub-files in a folder you want to zip
-        - 9 (maximum compression) will zip it as low as possible, but take longer
+    
+      r (recursive) must be used to grab all sub-files in a folder you want to zip
+      9 (maximum compression) will zip it as low as possible, but take longer
 
 - 
-  - 
+
     Example:
     
     Same as above but with zip. (Note, it shows you compression numbers per file. Neat.)
@@ -768,7 +768,7 @@ adding: unix101/intro/file\_layout\_2.html (deflated 36%)
 - Data Transfer
 
 - 
-  - scp
+scp
     Secure Copy transfers file(s) to or from a remote host via the SSH protocol. Therefore, you can transfer data into and out of nearly any server with SSH configured (see how SSH is incredibly useful?).
     Example:
 
@@ -777,18 +777,18 @@ adding: unix101/intro/file\_layout\_2.html (deflated 36%)
 largefile.10g    100%  10GB 21.4MB/s  07:59  
 
 - 
-  - sftp
+sftp
     Secure FTP is designed for secure file transfer (also over SSH, but requires more configuration on the server), and is run in an interactive mode with commands.
 
-  - wget
+wget
     Web Get is a handy program that downloads a file from a web site or FTP server. For example, if you find a download link to a .tar file containing a program you'd like to install on a server, simply copy the URL from your browser and paste it to your terminal after the wget command, and it will download that file to the remote server in the current directory.
 
-  - rsync
+rsync
     Remote Sync-is a very powerful tool for transferring, replicating, and verifying a set of files from one directory to another, often over a network (using, you guessed it, SSH). rsync is also able to resume an interrupted transfer, which is very handy when a multi-gigabyte transfer fails at 97%.
     Useful flags:
-      - -r -- recursive
-      - -P -- enable resuming partially transferred files and show progress of transfers
-      - -a -- archive mode: attempts to preserve file ownership, permissions, timestamps, and implies recursive copying (-r). This is useful when making a backup of a large directory or an entire computer.
+    -r -- recursive
+    -P -- enable resuming partially transferred files and show progress of transfers
+    -a -- archive mode: attempts to preserve file ownership, permissions, timestamps, and implies recursive copying (-r). This is useful when making a backup of a large directory or an entire computer.
 
     Example:
 
@@ -819,8 +819,8 @@ sent 8594 bytes received 73 bytes 17334.00 bytes/sec
 total size is 8368 speedup is 0.97
 
 - Version control
-  - Projects involving multiple authors often use a version control system to keep track of changes. The most common version control system at the moment is git.
-  - git
+Projects involving multiple authors often use a version control system to keep track of changes. The most common version control system at the moment is git.
+git
     git clone: creates a local copy of an online git repository.
     Example:
 
@@ -853,33 +853,33 @@ Checking connectivity... done.
 ## Unit 5: Advanced File System Management
 
 - Hardlink
-  - A link (ln) or hard link is basically a reference to an inode address and a block of data on the disk. Most files will only ever have one, but there are instances when multiple can be useful.
-  - Every hard link that points to the same file can be read and written to, and modifies the same underlying data inside the file. The exception to this are permissions; each hard link can have distinct, separate permissions.
-  - Hard links do not take up additional space in the filesystem, since they all point to the same data. This is contrary to making a copy of a file, whereas that will take up twice the amount of space on the filesystem.
-  - A file remains as long as there are at least one hard link pointing to it. Once the last hard link is deleted, the file is officially deleted and the space it previously consumed is freed.
+A link (ln) or hard link is basically a reference to an inode address and a block of data on the disk. Most files will only ever have one, but there are instances when multiple can be useful.
+Every hard link that points to the same file can be read and written to, and modifies the same underlying data inside the file. The exception to this are permissions; each hard link can have distinct, separate permissions.
+Hard links do not take up additional space in the filesystem, since they all point to the same data. This is contrary to making a copy of a file, whereas that will take up twice the amount of space on the filesystem.
+A file remains as long as there are at least one hard link pointing to it. Once the last hard link is deleted, the file is officially deleted and the space it previously consumed is freed.
 
 - Symlink
-  - A symbolic link (ln -s) also referred to as a soft link, is similar to a shortcut in Windows. It points to the original location of a file, but if the destination file is moved or deleted, the link will be broken.
-  - A symlink can be deleted with no affect to the original file. Editing the data within the file from either the symlink or the file itself, will modify the original file.
+A symbolic link (ln -s) also referred to as a soft link, is similar to a shortcut in Windows. It points to the original location of a file, but if the destination file is moved or deleted, the link will be broken.
+A symlink can be deleted with no affect to the original file. Editing the data within the file from either the symlink or the file itself, will modify the original file.
 
 - find
-  - find is a program that searches through one or more directories of a filesystem and reports files matching the specified criteria. Criteria could be file name, date, owner, permission, type, etc.
-  - Example:
+find is a program that searches through one or more directories of a filesystem and reports files matching the specified criteria. Criteria could be file name, date, owner, permission, type, etc.
+Example:
 
 [user@compute ~]$ find ~ -name large\*
 
 /home/user/largefile.10g
 
 - locate
-  - Locate is similar to find, except it searches a precompiled database index of all files on the system instead of actually looking at the filesystem itself. This makes locate much faster than find; in most cases, it is instantaneous.
-  - Typically, the locate database is updated once per day by an automated task set by the system administrator. Because of this, the results from locate can be out of date if there have been changes made to the file(s) since the database was updated. Use find for the most up-to date information.
+Locate is similar to find, except it searches a precompiled database index of all files on the system instead of actually looking at the filesystem itself. This makes locate much faster than find; in most cases, it is instantaneous.
+Typically, the locate database is updated once per day by an automated task set by the system administrator. Because of this, the results from locate can be out of date if there have been changes made to the file(s) since the database was updated. Use find for the most up-to date information.
 
 - Pipes 
-  - A pipe (|) is a method by which output from one command is used as the input for another command. This enables powerful processing of text, or streaming data from one program to another.
+A pipe (|) is a method by which output from one command is used as the input for another command. This enables powerful processing of text, or streaming data from one program to another.
 
 - grep
-  - Utility for searching text for lines matching basic text or regular expressions.
-  - grep can be most useful in its simplest form when piping a command to grep and searching for a string of text. 
+Utility for searching text for lines matching basic text or regular expressions.
+grep can be most useful in its simplest form when piping a command to grep and searching for a string of text. 
       
       Example:
 
@@ -890,18 +890,18 @@ Checking connectivity... done.
 Piping the output of df to grep with the expression 'scratch' will show any lines containing that string, in this case the /scratch mountpoint. This simple use can be applicable in many cases. Try some on your own.
 
 - 
-  - Useful flags:
+Useful flags:
     v -- invert match (show only lines which do not match the expression)
     An, -Bn, -Cn -- show surrounding n line(s) around the matching text (Above, Below, or Context [above and below])
     i -- ignore case (case insensitive search)
 
 - Regex
-  - Regular Expressions are a concise and flexible means to "match" for strings of text, such as particular characters, words, or patterns of characters. It can really help when searching logs and databases for entries or like entries.
-  - Because of their complexity, we will only touch on regular expressions by their use in other programs. See the links in External Resources section for more info.
+Regular Expressions are a concise and flexible means to "match" for strings of text, such as particular characters, words, or patterns of characters. It can really help when searching logs and databases for entries or like entries.
+Because of their complexity, we will only touch on regular expressions by their use in other programs. See the links in External Resources section for more info.
 
 - sed
-  - Stream Editor - is a utility that parses text and can apply transformations to that text as defined by regular expressions. It reads input from a pipe or from a file and applies a regular expression to each line and outputs them to stdout.
-  - Example:
+Stream Editor - is a utility that parses text and can apply transformations to that text as defined by regular expressions. It reads input from a pipe or from a file and applies a regular expression to each line and outputs them to stdout.
+Example:
 
 [user@compute ~]$ cat my\_quota.txt
 
@@ -920,8 +920,8 @@ newserver .igsp.duke.edu:/vol/central\_sata/data
            4.7T 2.7T 2.0T 58% /nfs/central
 
 - awk
-  - Awk is a tool used as a data extraction and and reporting tool, often taking in values from StdOut and separating lines into different fields via a specified separator and allowing you to report back a specific field.
-  - Example: 
+Awk is a tool used as a data extraction and and reporting tool, often taking in values from StdOut and separating lines into different fields via a specified separator and allowing you to report back a specific field.
+Example: 
       
       I can list all group members with getent, but it gives me other info as well, if I just want the members, I can use awk to parse out that info, using the colon as the separator, and listing field 4.
 
@@ -936,9 +936,9 @@ gml7,jwu7,jdoss,xt2,mmk24,cl215,chi00002,ljo6,jel2,mh309,cl26,cl262,avc2
 
 
 - Checksums
-  - A checksum (or hash sum) is a small snippet of text computed from an arbitrary block of data for the purpose of detecting accidental errors that may have been introduced during its transmission or storage. The integrity of the data can be checked at any later time by recomputing the checksum and comparing it with the stored one. If the checksums match, the data was almost certainly not altered.
-  - Some popular hash algorithms include: MD5, cksum, SHA-1, SHA-256
-  - MD5 is commonly used as it gives a good balance of performance (little time taken to generate a hash on large data) and collision resistance (likelihood that two different files will calculate to the same hash value). 
+A checksum (or hash sum) is a small snippet of text computed from an arbitrary block of data for the purpose of detecting accidental errors that may have been introduced during its transmission or storage. The integrity of the data can be checked at any later time by recomputing the checksum and comparing it with the stored one. If the checksums match, the data was almost certainly not altered.
+Some popular hash algorithms include: MD5, cksum, SHA-1, SHA-256
+MD5 is commonly used as it gives a good balance of performance (little time taken to generate a hash on large data) and collision resistance (likelihood that two different files will calculate to the same hash value). 
       
       Example:
 
@@ -974,114 +974,108 @@ Just adding a single character to the beginning of the file causes the checksum 
 
 ## Unit 6: Advanced Application Management
 
-- Checking Machine Resources
-  - Besides disk space, there are other resources on a server which you should be aware of when running applications, especially computationally intensive ones. Resources to consider include CPU, RAM (memory), and network bandwidth.
-  - ps - Processes
-    A program that lists running processes on the system.
-    Useful flags:
-      - -e -- show all processes, including those owned by others
-      - -u -- sort by user
-      - -f -- full format listing
-      - -x -- show all processes
-      - -H -- show a tree view of child/parent process hierarchy
+**Checking Machine Resources**
 
-    Can be used in conjunction with grep similar to the example provided above to locate a particular program or programs started by a user. 
+Besides disk space, there are other resources on a server which you should be aware of when running applications, especially computationally intensive ones. Resources to consider include CPU, RAM (memory), and network bandwidth.
 
-  - free
-    Tool to see the amount of memory (RAM) and swap space available and in use on the system.
-    Note that the way the Linux kernel allocates memory, free (and other utilities) may report that nearly all of your RAM is being used. This is not entirely true; Linux uses inactive memory to cache files very intelligently. However, if an application needs that memory, it will quickly release it from filesystem cache. For a more usable number, refer to the "-/+ buffers/cache" line to see how much RAM is available for applications, excluding the filesystem buffers.
-    Useful flags:
-      - -g -- number in gigabytes (most useful in today's machines)
+**ps** 
 
-  - top 
-    An interactive program that provides a dynamic real-time view of a running system, including processes, CPU usage and the type of its use, memory, and swap consumption. It also allows you to interact with processes so that they can be killed or reniced (assuming the user has permission).
+Processes - A program that lists running processes on the system.
 
-- Managing Processes
-  - kill
+*Useful Flags:*
+
+    -e    show all processes, including those owned by others
+    -u    sort by user
+    -f    full format listing
+    -x    show all processes
+    -H    show a tree view of child/parent process hierarchy
+
+`ps` can be used in conjunction with `grep` similar to the example provided above to locate a particular program or programs started by a user. 
+
+**free**
+
+A tool to see the amount of memory (RAM) and swap space available and in use on the system.
+
+*Useful Flags:*
+
+    -g    display numbers in gigabytes (most useful in today's machines)
+    -m    display numbers in megabytes
+
+Note that the way the Linux kernel allocates memory, free (and other utilities) may report that nearly all of your RAM is being used. This is not entirely true; Linux uses inactive memory to cache files very intelligently. However, if an application needs that memory, it will quickly release it from filesystem cache. For a more usable number, refer to the "-/+ buffers/cache" line to see how much RAM is available for applications, excluding the filesystem buffers.  (See [http://www.linuxatemyram.com/](http://www.linuxatemyram.com/) for a more detailed explanation.
+
+**top**
+
+An interactive program that provides a dynamic real-time view of a running system, including processes, CPU usage and the type of its use, memory, and swap consumption. It also allows you to interact with processes so that they can be killed or reniced (assuming the user has permission).
+
+**Managing Processes**
+
+**kill**
     Just as it describes, a command used for killing an active process abruptly. Often used by administrators for cleaning up rogue jobs, but regular users can also control their own jobs with this command as well.
     This command requires you to specify the PID of the process to be killed (this can be found with the ps command).
     Useful flags:
-      - -STOP -- suspends the process exactly as it is
-      - -CONT -- resume a previously STOP'd process
-      - -9 -- This is the most forceful method for killing a process
+    -STOP -- suspends the process exactly as it is
+    -CONT -- resume a previously STOP'd process
+    -9 -- This is the most forceful method for killing a process
 
-  - pkill
+**pkill**
     Similar to kill though it will allow you to search for processes based on specific terms such as user.
-    Useful flags
-      - -u -- user, pkill - u userid will kill all jobs by that user.
 
-  - killall
-    Kills all processes with the same name (not by PID).
-    Most flags of the kill process work with killall as well.
+*Useful Flags:*
 
-  - Job Control
-    UNIX systems have built-in support for running multiple processes at once from the same console through job control. Jobs can be launched in the background, then the user able to issue more commands while the background job runs. Backgrounded jobs will continue to output to your terminal.
-    Note that backgrounded jobs will NOT continue to run after disconnecting or logging out of the server. For this functionality, see nohup or screen.
-    This method is fairly crude, and has substantial limitations. For more full-featured interactive process management, see screen.
-    Useful commands:
-      -  & -- Runs  in the background
-      - , CTRL+Z -- Stops command and puts in background
-      - jobs -- List processes under job control with associated job IDs
-      - fg  -- Bring to foreground and resume execution
-      - bg  -- Resume execution in background
+    -u -- user, pkill - u userid will kill all jobs by that user
 
-    Example:
+**killall**
 
-[user@compute ~]$ ./run.sh
+Kills all processes with the same name (not by PID). Most flags of the `kill` command work with killall as well.
 
-2012-10-01 12:15:32 INFO: Running iteration 1 of 5...
+**Job Control**
 
-2012-10-01 12:15:37 INFO: Running iteration 2 of 5...
+UNIX systems have built-in support for running multiple processes at once from the same console through job control. Jobs can be launched in the background, then the user able to issue more commands while the background job runs. Backgrounded jobs will continue to output to your terminal.
 
-^Z
+Note that backgrounded jobs will NOT continue to run after disconnecting or logging out of the server. For this functionality, see `nohup` or  `screen` and `tmux`.  This method is fairly crude, and has substantial limitations. For more full-featured interactive process management, see screen.
 
-[1]+ Stopped         ./run.sh
+*Useful Commands:*
 
-[user@compute ~]$ jobs
+    &           Runs  in the background
+    CTRL+Z      Stops command and puts in background
+    jobs        List processes under job control with associated job IDs
+    fg          Bring to foreground and resume execution
+    bg          Resume execution in background
 
-[1]+ Stopped         ./run.sh
+Example:
 
-[user@compute ~]$ fg 1
+    [user@compute ~]$ ./run.sh
+    2012-10-01 12:15:32 INFO: Running iteration 1 of 5...
+    2012-10-01 12:15:37 INFO: Running iteration 2 of 5...
+    ^Z
+    [1]+ Stopped         ./run.sh
+    [user@compute ~]$ jobs
+    [1]+ Stopped         ./run.sh
+    [user@compute ~]$ fg 1
+    ./run.sh
+    2012-10-01 12:15:47 INFO: Running iteration 3 of 5...
+    ^Z
+    [1]+ Stopped         ./run.sh
+    [user@compute ~]$ bg 1
+    [1]+ ./run.sh &
+    [user@compute ~]$ 2012-10-01 12:15:54 INFO: Running iteration 4 of 5...
+    [user@compute ~]$ free -m
+                total    used    free   shared  buffers   cached
+    Mem:	32185   31032    1152        0      339    29315
+    -/+ buffers/cache:   1377   30807
+    Swap:	32765    779    31985
+    [user@compute ~]$ 2012-10-01 12:15:59 INFO: Running iteration 5 of 5...
+    2012-10-01 12:16:04 INFO: Done!
+    [1]+ Done          ./run.sh
+    [user@compute ~]$
 
-./run.sh
+In the above example, the program run.sh was executed normally, then stopped with `CTRL+Z`. The `jobs` command showed the job in a stopped state. `fg` command started the command executing again in the foreground, where it is once again stopped with `CTRL+Z`. `bg` is then used to resume execution in the background this time, which allows the user to run any other commands they like - in this case, `free -m` is used to check the memory usage. The run.sh script continues to run in the background, outputting text onto the console, until completing and exiting.
 
-2012-10-01 12:15:47 INFO: Running iteration 3 of 5...
+**screen & tmux**
 
-^Z
+The best thing(s) since self-slicing bread!
 
-[1]+ Stopped         ./run.sh
-
-[user@compute ~]$ bg 1
-
-[1]+ ./run.sh &
-
-[user@compute ~]$ 2012-10-01 12:15:54 INFO: Running iteration 4 of 5...
-
-[user@compute ~]$ free -m
-
-      total    used    free   shared  buffers   cached
-
-Mem:     32185   31032    1152     0    339   29315
-
--/+ buffers/cache:    1377   30807
-
-Swap:    32765    779   31985
-
-[user@compute ~]$ 2012-10-01 12:15:59 INFO: Running iteration 5 of 5...
-
-2012-10-01 12:16:04 INFO: Done!
-
-[1]+ Done          ./run.sh
-
-[user@compute ~]$
-
-In the above example, the program run.sh was executed normally, then stopped with CTRL+Z . The jobs command showed the job in a stopped state. fg command starts the command executing again in the foreground, where it is once again stopped with CTRL+Z . bg is then used to resume execution in the background this time, which allows the user to run any other commands they like - in this case, free -m is used to check the memory usage. The run.sh script continues to run in the background, outputting text onto the console, until completing and exiting.
-
-
-
-- 
-  - screen / tmux - the best thing since self-slicing bread
-    Allows you to connect and disconnect from long running processes and monitor the output. Good online "cheat sheets". 
+Screen and tmux are "terminal multiplexers".  This allows you to connect and disconnect from long running processes and monitor the output.  There are many good online "cheat sheets". 
 
 ## Unit 7 : Simple system administration
 
