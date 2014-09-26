@@ -519,7 +519,7 @@ A mount point is a directory or location in the local filesystem that you can us
 
 **NFS**
 
-*N*etwork *F*ile *S*ystem - NFS is a protocol which allows remote file storage to be available (mounted) on another machine. Most Linux servers use NFS for home directories and many of their storage options.
+NFS (Network File System)  is a protocol which allows remote file storage to be available (mounted) on another machine. Most Linux servers use NFS for home directories and many of their storage options.
 
 **Disk Usage & Quotas**
 
@@ -527,40 +527,49 @@ Knowing how much total space is available, how much is used, and how much is fre
 
 **df**
 
-*D*isk *F*ile System Info 
-
-This is used to see the entire size of a local volume or disk, and what is available, like I said above this may not be helpful to individual users, as a DF can report many terabytes available in a volume when in fact the user quota is much lower.
+Df (Disk File System Info) is used to see the entire size of a local volume or disk, and what is available, like I said above this may not be helpful to individual users, as a DF can report many terabytes available in a volume when in fact the user quota is much lower.
 
 *Useful Flags:*
 
-        - -h -- human-readable (converts byte values to MB, GB, etc.)
-        - -T "Type" -- lists the type of filesystem
+    -h           human-readable (converts byte values to MB, GB, etc.)
+    -T           lists the type of filesystem
 
-du    Disk Usage
-    This is used to count out the size of a particular directory, if you know the quota or volume size this will tell you what particular files or folders are using up specifically.
-    Useful flags
+**du**
+
+Du (Disk Usage) is used to count out the size of a particular directory, if you know the quota or volume size this will tell you what particular files or folders are using up specifically.
+
 *Useful Flags:*
-      -h "human readable" -- converts sizes to GB
-      -s "summary" -- only shows top folder size.
 
-Reading files
+      -h     human readable - converts sizes to GB
+      -s     summary - only shows top folder size.
 
-- 
-cat
-    Short for Concatenate, originally intended to combine two files into one long file to browse, many people use it for a simple output of the entire contents of a file. It's useful in a graphical terminal because once a file or files are catted out, you can browse up and down them with your mouse.
+**Reading files**
 
-less & more
-    These programs are intended for the reading of longer files. More will display the contents of a file, and at what place you are in the file via percentage, near the bottom, and allow you to move only downward through the file one page at a time with the space bar. Less on the other hand is actually more... it allows for advanced functionality, using the arrow keys to traverse up and down a file.
+There are a variety of ways to view and edit files within the terminal on Linux systems.
 
-diff
-    This is a program that will point out lines that are different if you have two files, or copies of the same file and want to see what the differences are.
-    -y -- Displays contents side by size and points out differences.
-    -q -- Only displays that they are differently quickly.
-    -b -- Ignore extra lines or whitespace.
+**cat**
 
-head & tail
-    head and tail are quick file readers, displaying respectively the top (head) or bottom (tail) sections of a file. By default it shows 10 lines, but the -n switch can set the number of lines to be shown.
-    Examples:
+Short for "concatenate", cat was originally intended to combine two files into one long file to browse, many people use it for a simple output of the entire contents of a file. It's useful in a graphical terminal because once a file or files are "catted" out, you can browse up and down them with your mouse.
+
+**less & more**
+
+These programs are intended for the reading of longer files. More will display the contents of a file, and at what place you are in the file via percentage, near the bottom, and allow you to move only downward through the file one page at a time with the space bar. Less on the other hand is actually more... it allows for advanced functionality, using the arrow keys to traverse up and down a file.
+
+**diff**
+
+This is a program that will point out lines that are different if you have two files, or copies of the same file and want to see what the differences are.
+
+*Useful Flags:*
+
+    -y    Displays contents side by size and points out differences.
+    -q    Only displays that they are differently quickly.
+    -b    Ignore extra lines or whitespace.
+
+**head & tail**
+
+Head and tail are quick file readers, displaying respectively the top (head) or bottom (tail) sections of a file. By default it shows 10 lines, but the -n switch can set the number of lines to be shown.
+
+Examples:
 
     [user@compute ~]$ tail /usr/share/dict/words
     Zythia
@@ -593,10 +602,14 @@ head & tail
     zZt
     ZZZ
 
-- Command Output Redirection
+**Command Output Redirection**
+
 Redirection can be used to take the output of a command and write it into to a file instead of standard output (the terminal). There are two types of file redirection, one for overwrite and one for append.
-    > -- a single arrow is used to create a file, or overwrite the contents of an existing file if necessary. This is good for sanity checks, many people will have a program that writes out a new file with a specific output and check back against it.
-    >> -- a double arrow is used to append to an existing file, very useful for logs, or continuing records so you can just add lines to the end.
+
+    >    a single arrow is used to create a file, or overwrite the contents of an existing file if necessary 
+         good for sanity checks, many people will have a program that writes out a new file with a specific output and check back against it
+
+    >>   a double arrow is used to append to an existing file, very useful for logs, or continuing records so you can just add lines to the end
 
 In this example, we use the df command to show the disk usage for the user's home directory and saves the output into a file called my\_quota.txt:
 
@@ -606,37 +619,43 @@ In this example, we use the df command to show the disk usage for the user's hom
     san01a.igsp.duke.edu:/vol/central\_sata/data
     4.7T 2.7T 2.0T 58% /nfs/central
 
-- Text Editors
+**Text Editors**
+
 Most configuration files, scripts, and system files are plain text and will need to be edited. There are a variety of text editors available on UNIX, which one you use is largely up to individual preference. To open a file, simply type run your editor of choice followed by the file (or files) you'd like to edit.
-nano / pico
-    Nano, as found on linux, or Pico as found on Mac OS and other proprietary systems, are nearly identical text editors and are a great editing tool for those new to UNIX. It has a handy command reference displayed which shows common commands, making it more intuitive than vi/vim.
+
+**nano / pico**
+
+Nano, as found on linux, or Pico as found on Mac OS and other proprietary systems, are nearly identical text editors and are a great editing tool for those new to UNIX. It has a handy command reference displayed which shows common commands, making it more intuitive than vi/vim.
 
 *Useful Keys:*
-    CTRL+O -- save
-    CTRL+W -- search
-    CTRL+V -- page down
-    CTRL+Y -- page up
-    CTRL+X -- exit
 
-vi / vim
-    The default editor on most unix/linux systems, and the editor of choice of many system administrators and programmers, including the instructors of this course. It is very powerful and has many shortcuts and built in functions that can make file editing efficient.
-    This program is so complex that many classes and books have been designed for the sole purpose of teaching its advanced functions. While it does have a high initial learning curve, a little time spent up front to get past the initial learning curve can be worthwhile, as its basic functions can be useful even to the more casual user.
+    CTRL+O    save
+    CTRL+W    search
+    CTRL+V    page down
+    CTRL+Y    page up
+    CTRL+X    exit
 
-emacs
-    Emacs is also an advanced editor, and one preferred by many programmers and systems administrators as it contains an executable shell to work from while editing.
+**vi / vim**
 
-Opening
-    In order to open most files in a unix system, you just type the name of the editor you wish to use, and then follow with the filename.
+The default editor on most unix/linux systems, and the editor of choice of many system administrators and programmers, including the instructors of this course. It is very powerful and has many shortcuts and built in functions that can make file editing efficient.  This program is so complex that many classes and books have been designed for the sole purpose of teaching its advanced functions. While it does have a high initial learning curve, a little time spent up front to get past the initial learning curve can be worthwhile, as its basic functions can be useful even to the more casual user.
 
-Saving
-    In order to save, most of the editors have a write out function as defined in the Useful Keys section above.
+**emacs**
 
-- File Extensions
+Emacs is also an advanced editor, and one preferred by many programmers and systems administrators as it contains an executable shell to work from while editing.
+
+**Opening and Saving**
+
+In order to open most files in a unix system, you just type the name of the editor you wish to use, and then follow with the filename.  To save, most of the editors have a write out function as defined in the Useful Keys section above.
+
+**File Extensions**
+
 Unlike Windows, where every file has an extension identifying its type, most files in a unix filesystem do not, and are just defined by their permissions, all files can be opened with one of the text editors above, but many cannot be read or edited this way, a compiled binary file will appear as gibberish to most people.
 
-- File Compression
-Tar
-    The main UNIX archive utility that will allow you to store many files and directories into a single file, while optionally compressing them in the process. Compression methods include GZ (GZip) or BZ2 (BZip2). Using compression can drastically shrink the file size, which is useful when archiving or transferring data across the internet. Many applications (and source code) are distributed inside these archives.
+**File Compression**
+
+**Tar**
+
+Tar is main UNIX archive utility that will allow you to store many files and directories into a single file, while optionally compressing them in the process. Compression methods include GZ (GZip) or BZ2 (BZip2). Using compression can drastically shrink the file size, which is useful when archiving or transferring data across the internet. Many applications (and source code) are distributed inside these archives.
 
 *Useful Flags:* 
 
@@ -669,14 +688,14 @@ A user has a directory full of files which can be cumbersome to send over email 
     [user@compute ~]$ du -hs unix101.tar.bz2
     5M unix101.tar.bz2
 
-- 
-Zip -- also available are the commands zip and unzip which are used for manipulating zip files, the common compression/archiving format on Windows and other platforms.
-    Useful flags
-    
-      r (recursive) must be used to grab all sub-files in a folder you want to zip
-      9 (maximum compression) will zip it as low as possible, but take longer
+**Zip** 
 
-- 
+Zip is also available are the commands zip and unzip which are used for manipulating zip files, the common compression/archiving format on Windows and other platforms.
+
+*Useful Flags:* 
+
+    r    recursive - used to grab all sub-files in a folder you want to zip
+    9    maximum compression - will zip it as low as possible, but take longer
 
 Example:
 
@@ -708,7 +727,7 @@ Same as above but with zip. (Note, it shows you compression numbers per file. Ne
 1. Use head on the standard dictionary for 100 words and redirect them into your file foo.
 2. Use tail on the standard dictionary for 500 words and redirect them to your baz file.
 3. Find out the size of each of these files and append that to a new file called sizes.
-4. Now using echo, write the console output "My name is lastname\_firstname" over the contents of the baz file.
+4. Now using echo, write the console output "My name is lastname_firstname" over the contents of the baz file.
 5. Using an editor modify the file to add a period at the end of the line.
 6. Save the file.
 7. Find out the size of the file and also redirect that to the file called sizes.
@@ -722,89 +741,81 @@ Same as above but with zip. (Note, it shows you compression numbers per file. Ne
 <a name='unit4'></a>
 ## Unit 4: Exploring Methods of Data Transference
 
-- Data Transfer
+**scp**
 
-- 
-scp
-    Secure Copy transfers file(s) to or from a remote host via the SSH protocol. Therefore, you can transfer data into and out of nearly any server with SSH configured (see how SSH is incredibly useful?).
-    Example:
+Scp (Secure Copy) transfers one or more files to or from a remote host via the SSH protocol. Therefore, you can transfer data into and out of nearly any server with SSH configured (see how SSH is incredibly useful?).
 
-[user@compute ~]$ scp largefile.10g user@compute2.igsp.duke.edu:/home/user/
+Example:
 
-largefile.10g    100%  10GB 21.4MB/s  07:59  
+    [user@compute ~]$ scp largefile.10g user@compute2.igsp.duke.edu:/home/user/
+    largefile.10g    100%  10GB 21.4MB/s  07:59
 
-- 
-sftp
-    Secure FTP is designed for secure file transfer (also over SSH, but requires more configuration on the server), and is run in an interactive mode with commands.
+**sftp**
 
-wget
-    Web Get is a handy program that downloads a file from a web site or FTP server. For example, if you find a download link to a .tar file containing a program you'd like to install on a server, simply copy the URL from your browser and paste it to your terminal after the wget command, and it will download that file to the remote server in the current directory.
+SFTP (Secure FTP) is designed for secure file transfer (also over SSH, but requires more configuration on the server), and is run in an interactive mode with commands.
 
-rsync
-    Remote Sync-is a very powerful tool for transferring, replicating, and verifying a set of files from one directory to another, often over a network (using, you guessed it, SSH). rsync is also able to resume an interrupted transfer, which is very handy when a multi-gigabyte transfer fails at 97%.
-    Useful flags:
-    -r -- recursive
-    -P -- enable resuming partially transferred files and show progress of transfers
-    -a -- archive mode: attempts to preserve file ownership, permissions, timestamps, and implies recursive copying (-r). This is useful when making a backup of a large directory or an entire computer.
+**wget**
 
-    Example:
+Wget (Web Get) is a handy program that downloads a file from a web site or FTP server. For example, if you find a download link to a .tar file containing a program you'd like to install on a server, simply copy the URL from your browser and paste it to your terminal after the wget command, and it will download that file to the remote server in the current directory.
 
-user@localhost ~ $ ls -l foo/
+**rsync**
 
-bar baz testfile
+Rsync (Remote Sync) is a very powerful tool for transferring, replicating, and verifying a set of files from one directory to another, often over a network (using, you guessed it, SSH). rsync is also able to resume an interrupted transfer, which is very handy when a multi-gigabyte transfer fails at 97%.
 
-user@localhost ~ $ rsync -Pa foo compute01.igsp.duke.edu:
+*Useful flags:*
 
-sending incremental file list
+    -r    recursive
+    -P    enable resuming partially transferred files and show progress of transfers
+    -a    archive mode: attempts to preserve file ownership, permissions, timestamps, and implies recursive copying (-r). This is useful when making a backup of a large directory or an entire computer
 
-foo/
+Example:
 
-foo/bar
+    user@localhost ~ $ ls -l foo/
+    bar baz testfile
+    user@localhost ~ $ rsync -Pa foo compute01.igsp.duke.edu:
+    sending incremental file list
+    foo/
+    foo/bar		3765 100%  0.00kB/s  0:00:00 (xfer#1, to-check=2/4)
+    foo/baz		2825 100% 183.92kB/s  0:00:00 (xfer#2, to-check=1/4)
+    foo/testfile	1778 100% 115.76kB/s  0:00:00 (xfer#3, to-check=0/4)
+    sent 8594 bytes received 73 bytes 17334.00 bytes/sec
+    total size is 8368 speedup is 0.97
 
-    3765 100%  0.00kB/s  0:00:00 (xfer#1, to-check=2/4)
+**Version control**
 
-foo/baz
-
-    2825 100% 183.92kB/s  0:00:00 (xfer#2, to-check=1/4)
-
-foo/testfile
-
-    1778 100% 115.76kB/s  0:00:00 (xfer#3, to-check=0/4)
-
-sent 8594 bytes received 73 bytes 17334.00 bytes/sec
-
-total size is 8368 speedup is 0.97
-
-- Version control
 Projects involving multiple authors often use a version control system to keep track of changes. The most common version control system at the moment is git.
-git
-    git clone: creates a local copy of an online git repository.
-    Example:
 
-[user@compute ~]$ $ git clone https://github.com/scipy/scipy
+**git**
 
-Cloning into 'scipy'...
+Git is a distributed version control and source code management system.
 
-remote: Counting objects: 91976, done.
+*Useful Commands:*
 
-remote: Compressing objects: 100% (31/31), done.
+    git clone    creates a local copy of an online git repository
+    git add      adds a new or modified file to be tracked in the staging area
+    git commit   sends tracked files in the staging area to the parent repository 
+    git status   shows untracked or modified files since the last commit
+    git diff     shows the differences between your changes and the parent repository
 
-remote: Total 91976 (delta 14), reused 2 (delta 0)
+Example:
 
-Receiving objects: 100% (91976/91976), 49.29 MiB | 5.83 MiB/s, done.
-
-Resolving deltas: 100% (70684/70684), done.
-
-Checking connectivity... done.
+    [user@compute ~]$ $ git clone https://github.com/scipy/scipy
+    Cloning into 'scipy'...
+    remote: Counting objects: 91976, done.
+    remote: Compressing objects: 100% (31/31), done.
+    remote: Total 91976 (delta 14), reused 2 (delta 0)
+    Receiving objects: 100% (91976/91976), 49.29 MiB | 5.83 MiB/s, done.
+    Resolving deltas: 100% (70684/70684), done.
+    Checking connectivity... done.
 
 <a name='lab4'></a>
 ## Lab 4 - Transferring Data Amongst Remote Hosts
 
-- Open a shell on your local lab workstation.
-- Download a file from the following web link:
-- http://www.tbi.univie.ac.at/~ronny/RNA/packages/source/ViennaRNA-2.1.3.tar.gz
-- Make note of the time it takes to complete the download.
-- We will use this file for a later lab.
+1. Open a shell on your local lab workstation.
+2. Download a file from the following web link:
+3. [http://www.tbi.univie.ac.at/~ronny/RNA/packages/source/ViennaRNA-2.1.3.tar.gz](http://www.tbi.univie.ac.at/~ronny/RNA/packages/source/ViennaRNA-2.1.3.tar.gz)
+4. Make note of the time it takes to complete the download.
+5. We will use this file for a later lab.
 
 <a name='unit5'></a>
 ## Unit 5: Advanced File System Management
@@ -821,7 +832,7 @@ A symbolic link (ln -s) also referred to as a soft link, is similar to a shortcu
 
 **find**
 
-find is a program that searches through one or more directories of a filesystem and reports files matching the specified criteria. Criteria could be file name, date, owner, permission, type, etc.
+Find is a program that searches through one or more directories of a filesystem and reports files matching the specified criteria. Criteria could be file name, date, owner, permission, type, etc.
 
 Example:
 
@@ -856,21 +867,21 @@ Piping the output of `df` to `grep` with the expression 'scratch' will show any 
 
 **Regex**
 
-Regular Expressions are a concise and flexible means to "match" for strings of text, such as particular characters, words, or patterns of characters. It can really help when searching logs and databases for entries or like entries.  Because of their complexity, we will only touch on regular expressions by their use in other programs. See the links in External Resources section for more info.
+Regex, or Regular Expressions, are a concise and flexible means to "match" for strings of text, such as particular characters, words, or patterns of characters. It can really help when searching logs and databases for entries or like entries.  Because of their complexity, we will only touch on regular expressions by their use in other programs. See the links in External Resources section for more info.
 
 **sed**
 
-Stream Editor, a utility that parses text and can apply transformations to that text as defined by regular expressions. It reads input from a pipe or from a file and applies a regular expression to each line and outputs them to stdout.
+Sed (Stream Editor), a utility that parses text and can apply transformations to that text as defined by regular expressions. It reads input from a pipe or from a file and applies a regular expression to each line and outputs them to stdout.
 
 Example:
 
-    [user@compute ~]$ cat my\_quota.txt
+    [user@compute ~]$ cat my_quota.txt
     Filesystem      Size Used Avail Use% Mounted on
-    san01a.igsp.duke.edu :/vol/central\_sata/data
+    san01a.igsp.duke.edu :/vol/central_sata/data
     4.7T 2.7T 2.0T 58% /nfs/central
-    [user@compute ~]$ sed 's/san01a/newserver/' my\_quota.txt
+    [user@compute ~]$ sed 's/san01a/newserver/' my_quota.txt
     Filesystem      Size Used Avail Use% Mounted on
-    newserver .igsp.duke.edu:/vol/central\_sata/data
+    newserver .igsp.duke.edu:/vol/central_sata/data
     4.7T 2.7T 2.0T 58% /nfs/central
 
 **awk**
@@ -922,7 +933,7 @@ Besides disk space, there are other resources on a server which you should be aw
 
 **ps**
 
-Processes - A program that lists running processes on the system.
+Ps (processes) is a program that lists running processes on the system.
 
 *Useful Flags:*
 
@@ -936,7 +947,7 @@ Processes - A program that lists running processes on the system.
 
 **free**
 
-A tool to see the amount of memory (RAM) and swap space available and in use on the system.
+Free is a tool to see the amount of memory (RAM) and swap space available and in use on the system.
 
 *Useful Flags:*
 
@@ -947,13 +958,13 @@ Note that the way the Linux kernel allocates memory, free (and other utilities) 
 
 **top**
 
-An interactive program that provides a dynamic real-time view of a running system, including processes, CPU usage and the type of its use, memory, and swap consumption. It also allows you to interact with processes so that they can be killed or reniced (assuming the user has permission).
+Top is an interactive program that provides a dynamic real-time view of a running system, including processes, CPU usage and the type of its use, memory, and swap consumption. It also allows you to interact with processes so that they can be killed or reniced (assuming the user has permission).
 
 **Managing Processes**
 
 **kill**
 
-Just as it describes, a command used for killing an active process abruptly. Often used by administrators for cleaning up rogue jobs, but regular users can also control their own jobs with this command as well. This command requires you to specify the PID of the process to be killed (this can be found with the ps command).
+Just as it describes, kill is a command used for killing an active process abruptly. Often used by administrators for cleaning up rogue jobs, but regular users can also control their own jobs with this command as well. This command requires you to specify the PID of the process to be killed (this can be found with the ps command).
 
 *Useful Flags:*
 
@@ -970,7 +981,7 @@ Just as it describes, a command used for killing an active process abruptly. Oft
 
 **killall**
 
-Kills all processes with the same name (not by PID). Most flags of the `kill` command work with killall as well.
+Killall is aptly named - it kills all processes with the same name (not by PID). Most flags of the `kill` command work with killall as well.
 
 **Job Control**
 
