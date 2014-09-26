@@ -7,6 +7,8 @@ Introduction to Linux
 
 Chris Collins, Jimmy Dorff, Drew Stinnett, et al
 
+** Table of Contents**
+
 1. [A Brief History of Unix](#unit0)
 2. [Lab 0: Creating a Personal Linux VM](#lab0)
 3. [Unit 1: Shell Navigation and a Brief History of Unix](#unit1)
@@ -22,9 +24,8 @@ Chris Collins, Jimmy Dorff, Drew Stinnett, et al
 13. [Unit 7: Simple System Administration](#unit7)
 14. [Lab 5: Building a Program from Source](#lab5)
 
-
-## A Brief History of Unix
 <a name='unit0'></a>
+## A Brief History of Unix
 
 - 1969: Unix invented at Bell Labs by Ken Thompson, Dennis Ritchie & others.
 - 1971: First Edition used for text processing of patent documents.
@@ -79,8 +80,8 @@ Example:
 
 On the first connection to a host you will need to accept the host key.  For Mac and Linux systems, if your username is the same as your netid you can omit it.
 
-## Lab 0 - Creating a personal Linux VM
 <a name='lab0'></a>
+## Lab 0 - Creating a personal Linux VM
 
 1. Using a web browser, go to *https://vm-manage.oit.duke.edu*
 2. Login using your Duke netid.
