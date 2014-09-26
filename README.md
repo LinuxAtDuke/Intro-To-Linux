@@ -7,7 +7,24 @@ Introduction to Linux
 
 Chris Collins, Jimmy Dorff, Drew Stinnett, et al
 
-## Unit 1: Shell Navigation, and A Brief History of Unix
+1. [A Brief History of Unix](#unit0)
+2. [Lab 0: Creating a Personal Linux VM](#lab0)
+3. [Unit 1: Shell Navigation and a Brief History of Unix](#unit1)
+4. [Lab 1: Accessing a Remote Console; Playing Around](#lab1)
+5. [Unit 2: Basic Filesystem Functionality](#unit2)
+6. [Lab 2: Working with Files in the Filesystem](#lab2)
+7. [Unit 3: Interactions with Data and Disk Storage](#unit3)
+8. [Lab 3: Modifying Our Files](#lab3)
+9. [Unit 4: Exploring Methods of Data Transference](#unit4)
+10. [Lab 4: Transferring Data Amongst Remote Hosts](#lab4)
+11. [Unit 5: Advanced File System Management](#unit5)
+12. [Unit 6: Advanced Process Management](#unit6)
+13. [Unit 7: Simple System Administration](#unit7)
+14. [Lab 5: Building a Program from Source](#lab5)
+
+
+## A Brief History of Unix
+<a name='unit0'></a>
 
 - 1969: Unix invented at Bell Labs by Ken Thompson, Dennis Ritchie & others.
 - 1971: First Edition used for text processing of patent documents.
@@ -63,6 +80,7 @@ Example:
 On the first connection to a host you will need to accept the host key.  For Mac and Linux systems, if your username is the same as your netid you can omit it.
 
 ## Lab 0 - Creating a personal Linux VM
+<a name='lab0'></a>
 
 1. Using a web browser, go to *https://vm-manage.oit.duke.edu*
 2. Login using your Duke netid.
@@ -84,6 +102,7 @@ Example:
     Retype new UNIX password:
 
 ## Unit 1: Shell Navigation
+<a name='unit1'></a>
 
 **echo**
 
@@ -164,6 +183,7 @@ In this example, python 2.4.3 is installed in /usr/bin, and python 2.7.3 is inst
     >>>
 
 ## Lab 1 - Accessing a remote console, playing around
+<a name='lab1'></a>
 
 1. Open up a terminal window and ssh into the host provided.
 2. Once there echo your path.
@@ -171,6 +191,7 @@ In this example, python 2.4.3 is installed in /usr/bin, and python 2.7.3 is inst
 4. Find out the option to make a new line above your echo statement.
  
 ## Unit 2: Basic File System Functionality
+<a name='unit2'></a>
  
 **pwd**
 
@@ -468,6 +489,7 @@ If we wanted to grant read and write permissions to the research group like we d
 The 760 tells us that the user field should have an octal count of 7, (read+write+execute), the group field should have a count of 6, (read+write) and the other field should have a count of 0.
 
 ## Lab 2 - Working with Files in the Filesystem
+<a name='lab2'></a>
 
 1. Open the terminal application
 2. Change your workstation to the /tmp directory.
@@ -488,6 +510,7 @@ At the end you should have 3 deliverables:
  - A secondary empty file that anyone can edit.
 
 ## Unit 3: Interactions With Data and Disk Storage
+<a name='unit3'></a>
 
 **Mount Point**
 
@@ -744,6 +767,7 @@ adding: unix101/intro/file\_layout\_2.html (deflated 36%)
 
 
 ## Lab 3 -  Modifying Our Files
+<a name='lab3'></a>
 
 1. Use head on the standard dictionary for 100 words and redirect them into your file foo.
 2. Use tail on the standard dictionary for 500 words and redirect them to your baz file.
@@ -764,6 +788,7 @@ adding: unix101/intro/file\_layout\_2.html (deflated 36%)
 
 
 ## Unit 4: Exploring Methods of Data Transference
+<a name='unit4'></a>
 
 - Data Transfer
 
@@ -841,6 +866,7 @@ Resolving deltas: 100% (70684/70684), done.
 Checking connectivity... done.
 
 ## Lab 4 - Transferring Data Amongst Remote Hosts
+<a name='lab4'></a>
 
 - Open a shell on your local lab workstation.
 - Download a file from the following web link:
@@ -851,6 +877,8 @@ Checking connectivity... done.
 
 
 ## Unit 5: Advanced File System Management
+<a name='unit5'></a>
+
 
 - Hardlink
 A link (ln) or hard link is basically a reference to an inode address and a block of data on the disk. Most files will only ever have one, but there are instances when multiple can be useful.
@@ -972,7 +1000,8 @@ x The quick brown fox jumps over the lazy dog
 
 Just adding a single character to the beginning of the file causes the checksum to be drastically different, thus indicating a modification to the contents of file.
 
-## Unit 6: Advanced Application Management
+## Unit 6: Advanced Process Management
+<a name='unit6'></a>
 
 **Checking Machine Resources**
 
@@ -1078,6 +1107,7 @@ The best thing(s) since self-slicing bread!
 Screen and tmux are "terminal multiplexers".  This allows you to connect and disconnect from long running processes and monitor the output.  There are many good online "cheat sheets". 
 
 ## Unit 7 : Simple system administration
+<a name='unit7'></a>
 
 **Admin access**
 
@@ -1130,6 +1160,7 @@ Make is the unix command to take the information from the make file and using th
     install    install the binaries and libraries to the appropriate locations as defined by the configure --prefix option
 
 ## Lab 5 - Building a Program from Source
+<a name='lab5'></a>
 
 In this lab, you will be building "ViennaRNA" from the source package you downloaded in Lab 4.
 
