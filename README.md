@@ -272,7 +272,7 @@ Examples:
     [user@compute ~]$ ls -l /nfs/labs/
     total 132
     drwxrws--- 17 root barda     4096 Jun 29 12:27 barda
-    lrwxrwxrwx 1 root root       31 Jan 16 2012 benfeylab -> /nfs/igsp/benfey_sas/benfeylab/
+    lrwxrwxrwx 1 root root       31 Jan 16 2012 benfeylab -> /nfs/dept/benfey_sas/benfeylab/
 
     [user@compute labs]$ ls -l -h -d barda/
     drwxrws--- 17 root barda 4.0K Jun 29 12:27 barda
@@ -387,7 +387,7 @@ Example:
     [user@compute ~]$ id
     uid=5555(user) gid=1000(professors)
     [user@compute ~]$ id joe
-    uid=1234(joe) gid=1000(professors) groups=1000(professors),1056(igsp),1029(willardlab),1088(genomic-handbook)
+    uid=1234(joe) gid=1000(professors) groups=1000(professors),1056(dept),1029(willardlab),1088(genomic-handbook)
 
 **whoami**
 
@@ -616,7 +616,7 @@ In this example, we use the `df` command to show the disk usage for the user's h
     [user@compute ~]$ df -h ~ > my_quota.txt
     [user@compute ~]$ cat my_quota.txt
     Filesystem      Size Used Avail Use% Mounted on
-    san01a.igsp.duke.edu:/vol/central_sata/data
+    san01a.dept.duke.edu:/vol/central_sata/data
     4.7T 2.7T 2.0T 58% /nfs/central
 
 **Text Editors**
@@ -748,7 +748,7 @@ Scp (Secure Copy) transfers one or more files to or from a remote host via the S
 
 Example:
 
-    [user@compute ~]$ scp largefile.10g user@compute2.igsp.duke.edu:/home/user/
+    [user@compute ~]$ scp largefile.10g user@compute2.dept.duke.edu:/home/user/
     largefile.10g    100%  10GB 21.4MB/s  07:59
 
 **sftp**
@@ -773,7 +773,7 @@ Example:
 
     user@localhost ~ $ ls -l foo/
     bar baz testfile
-    user@localhost ~ $ rsync -Pa foo compute01.igsp.duke.edu:
+    user@localhost ~ $ rsync -Pa foo compute01.dept.duke.edu:
     sending incremental file list
     foo/
     foo/bar		3765 100%  0.00kB/s  0:00:00 (xfer#1, to-check=2/4)
@@ -878,11 +878,11 @@ Example:
 
     [user@compute ~]$ cat my_quota.txt
     Filesystem      Size Used Avail Use% Mounted on
-    san01a.igsp.duke.edu :/vol/central_sata/data
+    san01a.dept.duke.edu :/vol/central_sata/data
     4.7T 2.7T 2.0T 58% /nfs/central
     [user@compute ~]$ sed 's/san01a/newserver/' my_quota.txt
     Filesystem      Size Used Avail Use% Mounted on
-    newserver .igsp.duke.edu:/vol/central_sata/data
+    newserver .dept.duke.edu:/vol/central_sata/data
     4.7T 2.7T 2.0T 58% /nfs/central
 
 **awk**
