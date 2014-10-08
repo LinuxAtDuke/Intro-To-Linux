@@ -665,6 +665,7 @@ Tar is main UNIX archive utility that will allow you to store many files and dir
     - z    (gzip format) if compressed
     - v    (verbose) will list files in and out of archive
     - f    (file name) the file you want to open, or save to
+    - C    (directory name) change to directory DIR
 
 Example:
 
