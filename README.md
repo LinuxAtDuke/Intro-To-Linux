@@ -113,7 +113,7 @@ Prints back what the user types to the screen or presents a variable in plaintex
 
 An Open Source replacement for the Bourne Shell (sh). It is the default shell on most Linux distributions currently and the one most likely to be encountered by users.
 
-csh and tcsh are less common and have annoying differences. Google "Top Ten Reasons not to use the C shell"
+csh and tcsh are less common and have annoying differences. Google "Top Ten Reasons not to use the C shell" or "Csh Programming Considered Harmful" (a classic rant by perl developer Tom Christiansen)
 
 **Tab Completion**
 
