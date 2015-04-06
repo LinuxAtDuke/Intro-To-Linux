@@ -866,6 +866,10 @@ Piping the output of `df` to `grep` with the expression 'scratch' will show any 
     -An, -Bn, -Cn    show surrounding n line(s) around the matching text Above, Below, or Context (above and below)
     -i               ignore case (case insensitive search)
 
+**A note from Doug McIlroy, inventor of the Unix pipe**
+
+"This is the Unix philosophy: Write programs that do one thing and do it well. Write programs to work together. Write programs to handle text streams, because that is a universal interface."
+
 **Regex**
 
 Regex, or Regular Expressions, are a concise and flexible means to "match" for strings of text, such as particular characters, words, or patterns of characters. It can really help when searching logs and databases for entries or like entries.  Because of their complexity, we will only touch on regular expressions by their use in other programs. See the links in External Resources section for more info.
