@@ -17,7 +17,7 @@ Chris Collins, Jimmy Dorff, Drew Stinnett, et al
 6. [Lab 2: Working with Files in the Filesystem](#lab2)
 7. [Unit 3: Interactions with Data and Disk Storage](#unit3)
 8. [Lab 3: Modifying Our Files](#lab3)
-9. [Unit 4: Exploring Methods of Data Transference](#unit4)
+9. [Unit 4: Exploring Methods of Moving Data](#unit4)
 10. [Lab 4: Transferring Data Amongst Remote Hosts](#lab4)
 11. [Unit 5: Advanced File System Management](#unit5)
 12. [Unit 6: Advanced Process Management](#unit6)
@@ -740,7 +740,7 @@ Same as above but with zip. (Note, it shows you compression numbers per file. Ne
 13. Use diff and display the differences of sizes file in your primary directory, and the one in the archive.
 
 <a name='unit4'></a>
-## Unit 4: Exploring Methods of Data Transference
+## Unit 4: Exploring Methods of Moving Data
 
 **scp**
 
