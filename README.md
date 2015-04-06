@@ -279,12 +279,12 @@ Examples:
 
 **File Permissions**
  
-Permissions are displayed as 10 bits in the leftmost column on a long directory listing, and describe who can read, write, and execute the file or directory. They are divided into sections:
+Permissions are displayed as 10 fields in the leftmost column on a long directory listing, and describe who can read, write, and execute the file or directory. They are divided into sections:
 
     | Info | User | Group | Other |
     |   -  |  --- |  ---  |  ---  |
 
-These spaces will usually be populated with the characters "r" (read), "w" (write), and "x" (execute) and determine what a user is able to do with the file or folder. The info bit usually will be blank, or have a letter d if it is a directory, or if there are some other special permissions present.
+These spaces will usually be populated with the characters "r" (read), "w" (write), and "x" (execute) and determine what a user is able to do with the file or folder. The info field denotes the "type" of file (insofar as Unix is concerned); it will contain a "-" for a "regular" file, a letter "d" if the entry is a directory, or other letters for "special" file types. 
 
 Example: Running our `ls -l` command above we see the following for this folder.
 
@@ -293,7 +293,7 @@ Example: Running our `ls -l` command above we see the following for this folder.
     drwxr-xr-x 2 steve visitors 4096 Apr 25 12:20 expt
     drwxr-xr-x 3 steve visitors 4096 Apr 17 21:04 R
 
-In this example, there are two directories listed. They are directories as indicated by the "d" in the info bit. The user (steve) has full permissions (read/write/execute), and the group (visitors) can read and execute (but not write), and everyone else can also read and execute (but not write).
+In this example, there are two directories listed. They are directories as indicated by the "d" in the info field. The user (steve) has full permissions (read/write/execute), and the group (visitors) can read and execute (but not write), and everyone else can also read and execute (but not write).
 
 For a file, execute permission means that it can be executed as a program or script. For a directory, execute permission (along with read permission) means that the contents of the directory can be read and listed.
 
