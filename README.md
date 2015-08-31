@@ -555,16 +555,6 @@ Short for "concatenate", cat was originally intended to combine two files into o
 
 These programs are intended for the reading of longer files. More will display the contents of a file, and at what place you are in the file via percentage, near the bottom, and allow you to move only downward through the file one page at a time with the space bar. Less on the other hand is actually more: it allows for advanced functionality, using the arrow keys to traverse up and down a file.
 
-**diff**
-
-This is a program that will point out lines that are different if you have two files, or copies of the same file and want to see what the differences are.
-
-*Useful Flags:*
-
-    -y    Displays contents side by size and points out differences.
-    -q    Only displays that they are differently quickly.
-    -b    Ignore extra lines or whitespace.
-
 **head & tail**
 
 Head and tail are quick file readers, displaying respectively the top (head) or bottom (tail) sections of a file. By default it shows 10 lines, but the `-n` switch can set the number of lines to be shown.
@@ -602,23 +592,6 @@ Examples:
     zZt
     ZZZ
 
-**Command Output Redirection**
-
-Redirection can be used to take the output of a command and write it into to a file instead of standard output (the terminal). There are two types of file redirection, one for overwrite and one for append.
-
-    >    a single arrow is used to create a file, or overwrite the contents of an existing file if necessary 
-         good for sanity checks, many people will have a program that writes out a new file with a specific output and check back against it
-
-    >>   a double arrow is used to append to an existing file, very useful for logs, or continuing records so you can just add lines to the end
-
-In this example, we use the `df` command to show the disk usage for the user's home directory and saves the output into a file called my_quota.txt:
-
-    [user@compute ~]$ df -h ~ > my_quota.txt
-    [user@compute ~]$ cat my_quota.txt
-    Filesystem      Size Used Avail Use% Mounted on
-    san01a.dept.duke.edu:/vol/central_sata/data
-    4.7T 2.7T 2.0T 58% /nfs/central
-
 **Text Editors**
 
 Most configuration files, scripts, and system files are plain text and will need to be edited. There are a variety of text editors available on UNIX, which one you use is largely up to individual preference. To open a file, simply type run your editor of choice followed by the file (or files) you'd like to edit.
@@ -646,6 +619,40 @@ Emacs is also an advanced editor, and one preferred by many programmers and syst
 **Opening and Saving**
 
 In order to open most files in a UNIX system, you just type the name of the editor you wish to use, and then follow with the filename.  To save, most of the editors have a write out function as defined in the Useful Keys section above.
+
+**Comparing Files**
+
+**cmp**
+
+This is a program that will tell you whether two files are different, and tell you the location of the first difference.
+
+**diff**
+
+This is a program that will point out lines that are different if you have two files, or copies of the same file and want to see what the differences are.
+
+*Useful Flags:*
+
+    -y    Displays contents side by size and points out differences.
+    -u    Displays "unified" differences (differences surrounded by context, and denoted by a "+" or "-" at the start of the line.
+    -q    Only displays that they are differently quickly.
+    -b    Ignore extra lines or whitespace.
+
+**Command Output Redirection**
+
+Redirection can be used to take the output of a command and write it into to a file instead of standard output (the terminal). There are two types of file redirection, one for overwrite and one for append.
+
+    >    a single arrow is used to create a file, or overwrite the contents of an existing file if necessary 
+         good for sanity checks, many people will have a program that writes out a new file with a specific output and check back against it
+
+    >>   a double arrow is used to append to an existing file, very useful for logs, or continuing records so you can just add lines to the end
+
+In this example, we use the `df` command to show the disk usage for the user's home directory and saves the output into a file called my_quota.txt:
+
+    [user@compute ~]$ df -h ~ > my_quota.txt
+    [user@compute ~]$ cat my_quota.txt
+    Filesystem      Size Used Avail Use% Mounted on
+    san01a.dept.duke.edu:/vol/central_sata/data
+    4.7T 2.7T 2.0T 58% /nfs/central
 
 **File Extensions**
 
