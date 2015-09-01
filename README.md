@@ -1,7 +1,7 @@
 Introduction to Linux
 =====================
 
-*Version 2.3, 20150901*
+*Version 2.3.1, 20150901*
 
 **Instructors**
 
@@ -735,7 +735,7 @@ Same as above but with zip. (Note, it shows you compression numbers per file. Ne
 1. Use head on the standard dictionary for 100 words and redirect them into your file foo.
 2. Use tail on the standard dictionary for 500 words and redirect them to your baz file.
 3. Find out the size of each of these files and append that to a new file called sizes.
-4. Now using echo, write the console output "My name is lastname_firstname" over the contents of the baz file.
+4. Now using echo, write the console output "My name is lastname_firstname" into the baz file, replacing the contents in that file.
 5. Using an editor modify the file to add a period at the end of the line.
 6. Save the file.
 7. Find out the size of the file and also redirect that to the file called sizes.
