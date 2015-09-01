@@ -1,11 +1,11 @@
 Introduction to Linux
 =====================
 
-*Version 2.1, 20141008*
+*Version 2.3, 20150901*
 
 **Instructors**
 
-Chris Collins, Jimmy Dorff, Drew Stinnett, et al
+Chris Collins, Jimmy Dorff, Victor Orlikowski, Drew Stinnett, et al
 
 **Table of Contents**
 
@@ -498,7 +498,7 @@ The 760 tells us that the user field should have an octal count of 7, (read+writ
 4. Make a directory named Lastname_Firstname.
 5. List the permissions on this directory.
 6. Modify the permissions where others can enter the directory but not edit it's contents.
-7. Change inside of the directory.
+7. Change (move) into the directory.
 8. Create an empty file named foo.
 9. Copy this file to a new file named bar.
 10. Move this file to a new file named baz.
