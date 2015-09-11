@@ -1,7 +1,7 @@
 Introduction to Linux
 =====================
 
-*Version 2.3.2, 20150911*
+*Version 2.3.2, 2015-09-11*
 
 **Instructors**
 
@@ -263,10 +263,10 @@ Displays a listing of files and directories.
 
 *Useful Flags:*
 
-    -l    Long directory listing. Prints more detail such as file size, ownership, permissions
-    -h    Print human-readable sizes on a long listing
-    -a    Shows all files and folders including hidden ones (which begin with the period character)
-    -d    When used to list a directory, lists the directory entry itself instead of its contents.
+    -l    Long directory listing with details like size, ownership, and permissions
+    -h    Print human-readable sizes (only affects long listings)
+    -a    Show all items, even hidden ones (whose names begin with a period)
+    -d    If the target is a directory, list the directory instead of its contents.
 
 Examples:
 
@@ -326,12 +326,13 @@ Copy a file or directory.
 *Useful Flags:*
 
     -v                     Prints a line for every file copied
-    -R, -r, --recursive    Recursively copy directories and all of their content - Use care with this one
+    -R, -r, --recursive    Recursively copy directories and all of their content.
+                           Use care with this one.
 
 Example:
 
     [user@compute ~]$ cp -v foo bar
-    'foo' -> `bar'
+    'foo' -> 'bar'
 
     [user@compute ~]$ ls -l foo bar
     -rw-r--r-- 1 user staff 0 Jul 31 12:23 bar
@@ -360,7 +361,8 @@ Removes (deletes) a file
 
 *Useful Flags:*
 
-    -r, -R, --recursive    Recursively remove directories and their contents - USE EXTREME CARE
+    -r, -R, --recursive    Recursively remove directories and their contents
+                           USE EXTREME CARE
     -i, --interactive      Prompt before overwriting
     -f, --force            Without notice plow through, very dangerous
     -v, --verbose          Prints a line for every file removed/deleted.
@@ -391,7 +393,8 @@ Example:
     [user@compute ~]$ id
     uid=5555(user) gid=1000(professors)
     [user@compute ~]$ id joe
-    uid=1234(joe) gid=1000(professors) groups=1000(professors),1056(dept),1029(willardlab),1088(genomic-handbook)
+    uid=1234(joe) gid=1000(professors) groups=1000(professors),1056(dept),\
+        1029(willardlab),1088(genomic-handbook)
 
 **whoami**
 
@@ -407,7 +410,7 @@ A similar tool is whoami, which simply displays your own username. Example:
 Example:
 
     [user@compute ~]$ getent group chilab
-    chilab:\*:1041:gml7,cs80,jwu7,jdoss,xt2,mmk24,les36,jb279,mjv10,mh180,
+    chilab:\*:1041:gml7,cs80,jwu7,jdoss,xt2,mmk24,les36,jb279,mjv10,mh180,\
     cl215,sl238,chi00002,ljo6,avc2,jel2,mh309,cl26,cl262
 
 **finger**
@@ -647,7 +650,8 @@ This is a program that will point out lines that are different if you have two f
 *Useful Flags:*
 
     -y    Displays contents side by size and points out differences.
-    -u    Displays "unified" differences (differences surrounded by context, and denoted by a "+" or "-" at the start of the line.
+    -u    Displays "unified" differences (differences surrounded by context, and
+          denoted by a "+" or "-" at the start of the line).
     -q    Only displays that they are differently quickly.
     -b    Ignore extra lines or whitespace.
 
@@ -655,12 +659,11 @@ This is a program that will point out lines that are different if you have two f
 
 Redirection can be used to take the output of a command and write it into to a file instead of standard output (the terminal). There are two types of file redirection, one for overwrite and one for append.
 
-    >    a single arrow is used to create a file, or overwrite the contents of an existing file if necessary 
-         good for sanity checks, many people will have a program that writes out a new file with a specific output and check back against it
+`>`: A single arrow is used to create a file, or overwrite the contents of an existing file if necessary. Good for sanity checks. Many people will have a program that writes out a new file with a specific output and check back against it.
 
-    >>   a double arrow is used to append to an existing file, very useful for logs, or continuing records so you can just add lines to the end
+`>>`: A double arrow is used to append to an existing file. Very useful for logs or continuing records, where you just want to add lines to the end
 
-In this example, we use the `df` command to show the disk usage for the user's home directory and saves the output into a file called my_quota.txt:
+In this example, we use the `df` command to show the disk usage for the user's home directory, and save the output into a file called my_quota.txt:
 
     [user@compute ~]$ df -h ~ > my_quota.txt
     [user@compute ~]$ cat my_quota.txt
@@ -676,7 +679,9 @@ Unlike Windows, where every file has an extension identifying its type, most fil
 
 **Tar**
 
-Tar is main UNIX archive utility that will allow you to store many files and directories into a single file, while optionally compressing them in the process. Compression methods include GZ (GZip) or BZ2 (BZip2). Using compression can drastically shrink the file size, which is useful when archiving or transferring data across the Internet. Many applications (and source code) are distributed inside these archives.
+Tar is main UNIX archive utility that will allow you to store many files and directories into a single file, while optionally compressing them in the process. Compression methods include gz (GZip), bz2 (BZip2), or xz.
+
+Using compression can drastically shrink the file size, which is useful when archiving or transferring data across the Internet. Many applications (and source code) are distributed inside these archives.
 
 *Useful Flags:* 
 
@@ -717,8 +722,8 @@ Zip is also available are the commands zip and unzip which are used for manipula
 
 *Useful Flags:* 
 
-    -r    recursive - used to grab all sub-files in a folder you want to zip
-    -9    maximum compression - will zip it as low as possible, but take longer
+    -r    recursive: grab all files in the folder you want to zip
+    -9    maximum compression: compress as small as possible, at the cost of more time
 
 Example:
 
@@ -787,9 +792,11 @@ Rsync (Remote Sync) is a very powerful tool for transferring, replicating, and v
 
 *Useful flags:*
 
-    -r    recursive
-    -P    enable resuming partially transferred files and show progress of transfers
-    -a    archive mode: attempts to preserve file ownership, permissions, timestamps, and implies recursive copying (-r). This is useful when making a backup of a large directory or an entire computer
+    -r    recursive: copy the contents of folders.
+    -P    show progress of transfers, and allow partial transfers to be resumed.
+    -a    archive mode: copy full contents of folders, preserving file ownership,
+          permissions, and timestamps. This is useful when making a backup of 
+          a directory or a whole computer.
 
 Example:
 
@@ -817,8 +824,9 @@ Git is a distributed version control and source code management system.
     git clone    creates a local copy of an online git repository
     git add      adds a new or modified file to be tracked in the staging area
     git commit   sends tracked files in the staging area to the parent repository 
-    git status   shows untracked or modified files since the last commit
-    git diff     shows the differences between your changes and the parent repository
+    git status   shows untracked files, and files you've changed since the last commit
+    git diff     shows the differences between your working directory and the parent
+                 repository, or between two commits
 
 Example:
 
@@ -884,8 +892,9 @@ Piping the output of `df` to `grep` with the expression 'scratch' will show any 
 
 *Useful flags:*
 
-    -v               invert match (show only lines which do not match the expression)
-    -An, -Bn, -Cn    show surrounding n line(s) around the matching text Above, Below, or Context (above and below)
+    -v               invert match (show lines which do **not** match the expression)
+    -An, -Bn, -Cn    show the surrounding n line(s) around the text that matches
+                     ...choices are Above, Below, or Context (above & below)
     -i               ignore case (case insensitive search)
 
 **A note from Doug McIlroy, inventor of the Unix pipe**
@@ -1102,7 +1111,7 @@ The configure script will typically define variables such as where to find depen
 
 *Useful Flags:*
 
-    --prefix    allows a user to specify the directory to place outputs in once built
+    --prefix    choose where to save the output files when you make
 
 **Make**
 
@@ -1110,8 +1119,9 @@ Make is the UNIX command to take the information from the make file and using th
 *Useful Arguments:*
 
     test       check that the program compile correctly
-    clean      clean up any leftovers from a prior failed build of the software
-    install    install the binaries and libraries to the appropriate locations as defined by the configure --prefix option
+    clean      clean up any leftovers from an earlier failed build
+    install    install the binaries and libraries in the appropriate locations,
+               based on the `configure --prefix` option
 
 <a name='lab5'></a>
 ## Lab 5 - Building a Program from Source
