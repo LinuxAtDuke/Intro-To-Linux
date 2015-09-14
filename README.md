@@ -1,7 +1,7 @@
 Introduction to Linux
 =====================
 
-*Version 2.3.1, 20150901*
+*Version 2.3.2, 2015-09-11*
 
 **Instructors**
 
@@ -64,13 +64,13 @@ Example: `[user@hostname ~]$`
 
 - Faster and easier to document, share, reproduce, automate.
 - Much faster for complex or repetitive tasks. 
-- Spaces and unusual characters in filenames make command line tools more difficult to use.
+- Spaces and unusual characters in filenames make command line tools more difficult to use. (NB: this is not actually awesome)
 
 **ssh - Secure Shell**
 
 Ssh (Secure Shell) is a protocol used to exchange data securely between systems, most commonly for interactive shell and file transfers.
 
-On Mac OSX or other Linux or UNIX systems, simply use the ssh command to connect to remote hosts. On Windows, there are a variety of clients, one of the most popular and easy to use is Putty (freeware).
+On Mac OS X or other Linux or UNIX systems, simply use the ssh command to connect to remote hosts. On Windows, there are a variety of clients, one of the most popular and easy to use is PuTTY (freeware).
 
 Example:
 
@@ -92,7 +92,7 @@ The vm-manage web page will tell you the name for your VM. The web site will als
 
 Example: `ssh bitnami@colab-sbx-87.oit.duke.edu`
 
-6. Once logged in via ssh, enter the `passwd` command to set a unique password.
+6. Once logged in via ssh, enter the `passwd` command to set a unique password. 
 
 Example:
 
@@ -113,7 +113,9 @@ Prints back what the user types to the screen or presents a variable in plaintex
 
 An Open Source replacement for the Bourne Shell (sh). It is the default shell on most Linux distributions currently and the one most likely to be encountered by users.
 
-csh and tcsh are less common and have annoying differences. Google "Top Ten Reasons not to use the C shell" or "Csh Programming Considered Harmful" (a classic rant by perl developer Tom Christiansen)
+csh and tcsh are less common, and bash users tend to find their differences annoying. Google "Top Ten Reasons not to use the C shell" or "Csh Programming Considered Harmful" (a classic rant by Perl developer Tom Christiansen)
+
+If you control your own system, and spend a lot of time working in (or scripting) the shell, there are other less-common shells that you might want to consider. In particular, zsh has a devoted following, and offers useful features that aren't available in bash.
 
 **Tab Completion**
 
@@ -137,6 +139,8 @@ Shows the manuals for commands.
 Man can be your best friend when you are unfamiliar with commands in UNIX. You can run man followed by any command and see a comprehensive manual of the command and all options you can run it with.
 
 Sometimes manuals can be lengthy and the amount of information you need is not easily discernible, as such, short form help can be found often by trailing a command with `-?` or `--help`.
+
+If you know what you want to do, but don't know the command, `man -k` (or `apropos`) will list all the man pages that include the string you enter. You can then use `man` to learn more details about the command(s) that you found.
 
 **Hotkeys and Shortcuts:**
 
@@ -187,7 +191,7 @@ In this example, python 2.4.3 is installed in /usr/bin, and python 2.7.3 is inst
 ## Lab 1 - Accessing a remote console, playing around
 
 1. Open up a terminal window and ssh into the host provided.
-2. Once there echo your path.
+2. Once there, echo your path.
 3. Open the manual for the echo command.
 4. Find out the option to make a new line above your echo statement.
  
@@ -251,7 +255,7 @@ Example:
 
 **Executing**
 
-In a UNIX environment, you execute a program by typing out the full path to it. In order to run matlab, you can type `/usr/local/bin/matlab`, or if your current working directory is the directory `/usr/local/bin`, you can use a relative path and type `./matlab`, or if it is in one of your application paths ($PATH) above, you simple have to type `matlab`.
+In a UNIX environment, you execute a program by typing out the full path to it. In order to run matlab, you can type `/usr/local/bin/matlab`; or if your current working directory is the directory `/usr/local/bin`, you can use a relative path and type `./matlab`; or if it is in one of your application paths ($PATH) above, you simply have to type `matlab`.
 
 **ls**
 
@@ -259,10 +263,10 @@ Displays a listing of files and directories.
 
 *Useful Flags:*
 
-    -l    Long directory listing. Prints more detail such as file size, ownership, permissions
-    -h    Print human-readable sizes on a long listing
-    -a    Shows all files and folders including hidden ones (which begin with the period character)
-    -d    When used to list a directory, lists the directory entry itself instead of its contents.
+    -l    Long directory listing with details like size, ownership, and permissions
+    -h    Print human-readable sizes (only affects long listings)
+    -a    Show all items, even hidden ones (whose names begin with a period)
+    -d    If the target is a directory, list the directory instead of its contents.
 
 Examples:
 
@@ -322,12 +326,13 @@ Copy a file or directory.
 *Useful Flags:*
 
     -v                     Prints a line for every file copied
-    -R, -r, --recursive    Recursively copy directories and all of their content - Use care with this one
+    -R, -r, --recursive    Recursively copy directories and all of their content.
+                           Use care with this one.
 
 Example:
 
     [user@compute ~]$ cp -v foo bar
-    'foo' -> `bar'
+    'foo' -> 'bar'
 
     [user@compute ~]$ ls -l foo bar
     -rw-r--r-- 1 user staff 0 Jul 31 12:23 bar
@@ -356,7 +361,8 @@ Removes (deletes) a file
 
 *Useful Flags:*
 
-    -r, -R, --recursive    Recursively remove directories and their contents - USE EXTREME CARE
+    -r, -R, --recursive    Recursively remove directories and their contents
+                           USE EXTREME CARE
     -i, --interactive      Prompt before overwriting
     -f, --force            Without notice plow through, very dangerous
     -v, --verbose          Prints a line for every file removed/deleted.
@@ -365,7 +371,7 @@ Removes (deletes) a file
 
 Removes an empty directory
 
-Sometimes a directory will seem empty but not be, you may need take a closer look with `ls -al`
+Sometimes a directory will seem empty but will actually include hidden files. If rmdir fails, you may need take a closer look at the apparently-empty directory with `ls -al`.
 
 **w**
  
@@ -387,7 +393,8 @@ Example:
     [user@compute ~]$ id
     uid=5555(user) gid=1000(professors)
     [user@compute ~]$ id joe
-    uid=1234(joe) gid=1000(professors) groups=1000(professors),1056(dept),1029(willardlab),1088(genomic-handbook)
+    uid=1234(joe) gid=1000(professors) groups=1000(professors),1056(dept),\
+        1029(willardlab),1088(genomic-handbook)
 
 **whoami**
 
@@ -403,7 +410,7 @@ A similar tool is whoami, which simply displays your own username. Example:
 Example:
 
     [user@compute ~]$ getent group chilab
-    chilab:\*:1041:gml7,cs80,jwu7,jdoss,xt2,mmk24,les36,jb279,mjv10,mh180,
+    chilab:\*:1041:gml7,cs80,jwu7,jdoss,xt2,mmk24,les36,jb279,mjv10,mh180,\
     cl215,sl238,chi00002,ljo6,avc2,jel2,mh309,cl26,cl262
 
 **finger**
@@ -418,7 +425,7 @@ I see on a server that user svu is running lots of jobs, but that username is qu
     uid=5555(svu) gid=400(visitors) groups=400(visitors)
     [user@compute ~]$ finger svu
     Login: svu              Name: Steve User
-    Directory: /home/svuShell: /bin/bash
+    Directory: /home/svu   Shell: /bin/bash
     Last login Wed Aug 1 23:34 2012 (EST) on pts/5 from localhost.
     No mail.
     No Plan.
@@ -493,7 +500,7 @@ The 760 tells us that the user field should have an octal count of 7, (read+writ
 ## Lab 2 - Working with Files in the Filesystem
 
 1. Open the terminal application
-2. Change your workstation to the /tmp directory.
+2. Navigate to the /tmp directory.
 3. Run id on your username, write down your primary group.
 4. Make a directory named Lastname_Firstname.
 5. List the permissions on this directory.
@@ -503,7 +510,7 @@ The 760 tells us that the user field should have an octal count of 7, (read+writ
 9. Copy this file to a new file named bar.
 10. Move this file to a new file named baz.
 11. Modify the permissions so that only you can read foo.
-12. Modify the permissions on baz to allow anyone to edit it. (not a good idea in the real world)
+12. Modify the permissions on baz to allow anyone to edit it. (Not a good idea in the real world.)
 
 At the end you should have 3 deliverables:
  - A folder with your name, with permissions set correctly.
@@ -519,7 +526,7 @@ A mount point is a directory or location in the local filesystem that you can us
 
 **NFS**
 
-NFS (Network File System)  is a protocol which allows remote file storage to be available (mounted) on another machine. Most Linux servers use NFS for home directories and many of their storage options.
+NFS (Network File System)  is a protocol which allows remote file storage to be available (mounted) on another machine. Many Linux servers use NFS for home directories and many of their storage options.
 
 **Disk Usage & Quotas**
 
@@ -527,7 +534,9 @@ Knowing how much total space is available, how much is used, and how much is fre
 
 **df**
 
-DF (Disk File System Info) is used to see the entire size of a local volume or disk, and what is available, like I said above this may not be helpful to individual users, as a DF can report many terabytes available in a volume when in fact the user quota is much lower.
+DF (Disk File System Info) is used to see the entire size of a local volume or disk, and what is available. However, the 'available' numbers are simply the space free on the volume, and do not reflect limits imposed by user quotas.
+
+So a user could see `df` report that there are many GB free, while at the same time they don't have space to save a 2 MB file.
 
 *Useful Flags:*
 
@@ -549,11 +558,11 @@ There are a variety of ways to view and edit files within the terminal on Linux 
 
 **cat**
 
-Short for "concatenate", cat was originally intended to combine two files into one long file to browse, many people use it for a simple output of the entire contents of a file. It's useful in a graphical terminal because once a file or files are "catted" out, you can browse up and down them with your mouse.
+Short for "con*cat*enate", cat was originally intended to combine two files into one long file to browse; however, many people use it for a simple output of the contents of a file. It's useful in a graphical terminal because once a file or files are "catted" out, you can browse up and down them with your mouse.
 
 **less & more**
 
-These programs are intended for the reading of longer files. More will display the contents of a file, and at what place you are in the file via percentage, near the bottom, and allow you to move only downward through the file one page at a time with the space bar. Less on the other hand is actually more: it allows for advanced functionality, using the arrow keys to traverse up and down a file.
+These programs are intended for the reading of longer files. More will display the contents of a file, and at what place you are in the file via percentage, near the bottom, and allow you to move only downward through the file one page at a time with the space bar. `Less` on the other hand offers much more than `more`: it allows for searching with `/`, navigation up *and* down with the arrow keys, and other handy features.
 
 **head & tail**
 
@@ -598,7 +607,7 @@ Most configuration files, scripts, and system files are plain text and will need
 
 **nano / pico**
 
-Nano, as found on Linux, or Pico as found on Mac OS and other proprietary systems, are nearly identical text editors and are a great editing tool for those new to UNIX. It has a handy command reference displayed which shows common commands, making it more intuitive than vi/vim.
+Nano and pico are nearly identical text editors developed for the Pine email client, and are a great editing tool for those new to UNIX. Since they were supposed to be a simple tool for email users, they have a low learning curve, and include a command reference at the bottom of the window for new users.
 
 *Useful Keys:*
 
@@ -610,11 +619,19 @@ Nano, as found on Linux, or Pico as found on Mac OS and other proprietary system
 
 **vi / vim**
 
-The default editor on most UNIX/Linux systems, and the editor of choice of many system administrators and programmers, including the instructors of this course. It is very powerful and has many shortcuts and built in functions that can make file editing efficient.  This program is so complex that many classes and books have been designed for the sole purpose of teaching its advanced functions. While it does have a high initial learning curve, a little time spent up front to get past the initial learning curve can be worthwhile, as its basic functions can be useful even to the more casual user.
+The default editor on most UNIX/Linux systems, and the editor of choice of many system administrators and programmers, including some of the instructors of this course.
+
+It is very powerful and has many shortcuts and built in functions to make file editing more efficient. Vim is so complex that many classes and books have been designed for the sole purpose of teaching its advanced functions.
+
+While it does have a high initial learning curve, a little time spent up front to get past the initial learning curve can be worthwhile, as its basic functions can be useful even to the more casual user.
 
 **emacs**
 
-Emacs is also an advanced editor, and one preferred by many programmers and systems administrators as it contains an executable shell to work from while editing.
+Emacs is an advanced text editor, but that's not why its partisans love it.
+
+It contains a fully-executable programming shell, and you can make it do almost anything.
+
+The tradeoff for that power is that its learning curve makes vim look like pico.
 
 **Opening and Saving**
 
@@ -633,7 +650,8 @@ This is a program that will point out lines that are different if you have two f
 *Useful Flags:*
 
     -y    Displays contents side by size and points out differences.
-    -u    Displays "unified" differences (differences surrounded by context, and denoted by a "+" or "-" at the start of the line.
+    -u    Displays "unified" differences (differences surrounded by context, and
+          denoted by a "+" or "-" at the start of the line).
     -q    Only displays that they are differently quickly.
     -b    Ignore extra lines or whitespace.
 
@@ -641,12 +659,11 @@ This is a program that will point out lines that are different if you have two f
 
 Redirection can be used to take the output of a command and write it into to a file instead of standard output (the terminal). There are two types of file redirection, one for overwrite and one for append.
 
-    >    a single arrow is used to create a file, or overwrite the contents of an existing file if necessary 
-         good for sanity checks, many people will have a program that writes out a new file with a specific output and check back against it
+`>`: A single arrow is used to create a file, or overwrite the contents of an existing file if necessary. Good for sanity checks. Many people will have a program that writes out a new file with a specific output and check back against it.
 
-    >>   a double arrow is used to append to an existing file, very useful for logs, or continuing records so you can just add lines to the end
+`>>`: A double arrow is used to append to an existing file. Very useful for logs or continuing records, where you just want to add lines to the end
 
-In this example, we use the `df` command to show the disk usage for the user's home directory and saves the output into a file called my_quota.txt:
+In this example, we use the `df` command to show the disk usage for the user's home directory, and save the output into a file called my_quota.txt:
 
     [user@compute ~]$ df -h ~ > my_quota.txt
     [user@compute ~]$ cat my_quota.txt
@@ -654,7 +671,7 @@ In this example, we use the `df` command to show the disk usage for the user's h
     san01a.dept.duke.edu:/vol/central_sata/data
     4.7T 2.7T 2.0T 58% /nfs/central
 
-**File Extensions**
+**File Extensions?**
 
 Unlike Windows, where every file has an extension identifying its type, most files in a UNIX filesystem do not, and are just defined by their permissions, all files can be opened with one of the text editors above, but many cannot be read or edited this way, a compiled binary file will appear as gibberish to most people.
 
@@ -662,17 +679,20 @@ Unlike Windows, where every file has an extension identifying its type, most fil
 
 **Tar**
 
-Tar is main UNIX archive utility that will allow you to store many files and directories into a single file, while optionally compressing them in the process. Compression methods include GZ (GZip) or BZ2 (BZip2). Using compression can drastically shrink the file size, which is useful when archiving or transferring data across the Internet. Many applications (and source code) are distributed inside these archives.
+Tar is main UNIX archive utility that will allow you to store many files and directories into a single file, while optionally compressing them in the process. Compression methods include gz (GZip), bz2 (BZip2), or xz.
+
+Using compression can drastically shrink the file size, which is useful when archiving or transferring data across the Internet. Many applications (and source code) are distributed inside these archives.
 
 *Useful Flags:* 
 
-    - c    (create) create a new archive
-    - x    (extract) extract or expand an archive file
-    - j    (bz2 format) if compressed
-    - z    (gzip format) if compressed
-    - v    (verbose) will list files in and out of archive
-    - f    (file name) the file you want to open, or save to
-    - C    (directory name) change to directory DIR
+    -c    (create) create a new archive
+    -x    (extract) extract or expand an archive file
+    -j    (bz2 format) if compressed
+    -J    (xz format) if compressed
+    -z    (gzip format) if compressed
+    -v    (verbose) will list files in and out of archive
+    -f    (file name) the file you want to open, or save to
+    -C    (directory name) change to directory DIR
 
 Example:
 
@@ -702,8 +722,8 @@ Zip is also available are the commands zip and unzip which are used for manipula
 
 *Useful Flags:* 
 
-    r    recursive - used to grab all sub-files in a folder you want to zip
-    9    maximum compression - will zip it as low as possible, but take longer
+    -r    recursive: grab all files in the folder you want to zip
+    -9    maximum compression: compress as small as possible, at the cost of more time
 
 Example:
 
@@ -736,7 +756,7 @@ Same as above but with zip. (Note, it shows you compression numbers per file. Ne
 2. Use tail on the standard dictionary for 500 words and redirect them to your baz file.
 3. Find out the size of each of these files and append that to a new file called sizes.
 4. Now using echo, write the console output "My name is lastname_firstname" into the baz file, replacing the contents in that file.
-5. Using an editor modify the file to add a period at the end of the line.
+5. Using the editor of your choice, modify the file to add a period at the end of the line.
 6. Save the file.
 7. Find out the size of the file and also redirect that to the file called sizes.
 8. Make a new directory called archive, and copy each of the 3 files into the archive.
@@ -772,9 +792,11 @@ Rsync (Remote Sync) is a very powerful tool for transferring, replicating, and v
 
 *Useful flags:*
 
-    -r    recursive
-    -P    enable resuming partially transferred files and show progress of transfers
-    -a    archive mode: attempts to preserve file ownership, permissions, timestamps, and implies recursive copying (-r). This is useful when making a backup of a large directory or an entire computer
+    -r    recursive: copy the contents of folders.
+    -P    show progress of transfers, and allow partial transfers to be resumed.
+    -a    archive mode: copy full contents of folders, preserving file ownership,
+          permissions, and timestamps. This is useful when making a backup of 
+          a directory or a whole computer.
 
 Example:
 
@@ -802,8 +824,9 @@ Git is a distributed version control and source code management system.
     git clone    creates a local copy of an online git repository
     git add      adds a new or modified file to be tracked in the staging area
     git commit   sends tracked files in the staging area to the parent repository 
-    git status   shows untracked or modified files since the last commit
-    git diff     shows the differences between your changes and the parent repository
+    git status   shows untracked files, and files you've changed since the last commit
+    git diff     shows the differences between your working directory and the parent
+                 repository, or between two commits
 
 Example:
 
@@ -869,8 +892,9 @@ Piping the output of `df` to `grep` with the expression 'scratch' will show any 
 
 *Useful flags:*
 
-    -v               invert match (show only lines which do not match the expression)
-    -An, -Bn, -Cn    show surrounding n line(s) around the matching text Above, Below, or Context (above and below)
+    -v               invert match (show lines which do **not** match the expression)
+    -An, -Bn, -Cn    show the surrounding n line(s) around the text that matches
+                     ...choices are Above, Below, or Context (above & below)
     -i               ignore case (case insensitive search)
 
 **A note from Doug McIlroy, inventor of the Unix pipe**
@@ -1042,7 +1066,7 @@ In the above example, the program run.sh was executed normally, then stopped wit
 
 The best thing(s) since self-slicing bread!
 
-Screen and tmux are "terminal multiplexers".  This allows you to connect and disconnect from long running processes and monitor the output.  There are many good online "cheat sheets". 
+Screen and tmux are "terminal multiplexers".  This allows you to connect and disconnect from long running processes and monitor the output. There are many good online "cheat sheets".
 
 <a name='unit7'></a>
 ## Unit 7 : Simple system administration
@@ -1087,15 +1111,17 @@ The configure script will typically define variables such as where to find depen
 
 *Useful Flags:*
 
-    --prefix    allows a user to specify the directory to place outputs in once built
+    --prefix    choose where to save the output files when you make
 
 **Make**
+
 Make is the UNIX command to take the information from the make file and using the resident compiler (usually gcc) build the application from the source libraries provided in the package. 
 *Useful Arguments:*
 
     test       check that the program compile correctly
-    clean      clean up any leftovers from a prior failed build of the software
-    install    install the binaries and libraries to the appropriate locations as defined by the configure --prefix option
+    clean      clean up any leftovers from an earlier failed build
+    install    install the binaries and libraries in the appropriate locations,
+               based on the `configure --prefix` option
 
 <a name='lab5'></a>
 ## Lab 5 - Building a Program from Source
