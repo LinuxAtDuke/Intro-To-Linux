@@ -413,23 +413,6 @@ Example:
     chilab:\*:1041:gml7,cs80,jwu7,jdoss,xt2,mmk24,les36,jb279,mjv10,mh180,\
     cl215,sl238,chi00002,ljo6,avc2,jel2,mh309,cl26,cl262
 
-**finger**
-
-Finger is used to point (get it?) at someone's username and find out a human readable response on who they are if you don't recognize their system id.
-
-Example: 
-
-I see on a server that user svu is running lots of jobs, but that username is quite cryptic. I try id first, to see which lab he is affiliated with but that doesn't help, and that is where finger comes in:
-
-    [user@compute ~]$ id svu
-    uid=5555(svu) gid=400(visitors) groups=400(visitors)
-    [user@compute ~]$ finger svu
-    Login: svu              Name: Steve User
-    Directory: /home/svu   Shell: /bin/bash
-    Last login Wed Aug 1 23:34 2012 (EST) on pts/5 from localhost.
-    No mail.
-    No Plan.
-
 **chmod**
 
 Change mode, is a command used to modify permissions on a file. If you would like to share your files with another user in your group, you can modify the permissions to grant read, write, or execute the file.
