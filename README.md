@@ -83,24 +83,14 @@ On the first connection to a host you will need to accept the host key.  For Mac
 <a name='lab0'></a>
 ## Lab 0 - Creating a personal Linux VM
 
-1. Using a web browser, go to *https://vm-manage.oit.duke.edu*
-2. Login using your Duke NetId.
-3. Create a new project for this class.
-4. Select *Ubuntu 14 Basic* for the Server.
+1. Using a web browser, go to *https://vcl.duke.edu*
+2. Click "Reserve a VM"
+3. Login using your Duke NetId.
+4. Select *Ubuntu 16.04* for the Application and Operating System
 
-The vm-manage web page will tell you the name for your VM. The web site will also tell you the initial username and password. You should connect via ssh.
+The VCL web page will tell you the name for your VM. You should connect via ssh.
 
-Example: `ssh bitnami@colab-sbx-87.oit.duke.edu`
-
-6. Once logged in via ssh, enter the `passwd` command to set a unique password. 
-
-Example:
-
-    passwd
-    Changing password for bitnami.
-    (current) UNIX password:
-    Enter new UNIX password:
-    Retype new UNIX password:
+Example: `ssh your_netid@vcm-1234.vm.duke.edu`
 
 <a name='unit1'></a>
 ## Unit 1: Shell Navigation
