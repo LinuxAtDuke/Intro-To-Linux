@@ -83,7 +83,7 @@ On the first connection to a host you will need to accept the host key.  For Mac
 <a name='lab0'></a>
 ## Lab 0 - Creating a personal Linux VM
 
-1. Using a web browser, go to *https://vcl.duke.edu*
+1. Using a web browser, go to *https://vcm.duke.edu*
 2. Click "Reserve a VM"
 3. Login using your Duke NetId.
 4. Select *Ubuntu 16.04* for the Application and Operating System
