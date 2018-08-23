@@ -86,7 +86,7 @@ On the first connection to a host you will need to accept the host key.  For Mac
 1. Using a web browser, go to *https://vcm.duke.edu*
 2. Click "Reserve a VM"
 3. Login using your Duke NetId.
-4. Select *Ubuntu 16.04* for the Application and Operating System
+4. Select *Ubuntu 18.04* for the Application and Operating System
 
 The VCL web page will tell you the name for your VM. You should connect via ssh.
 
