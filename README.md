@@ -1,7 +1,7 @@
 Introduction to Linux
 =====================
 
-*Version 2.3.2, 2015-09-11*
+*Version 2.3.3, 2018-09-23*
 
 **Instructors**
 
